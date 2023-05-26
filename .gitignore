@@ -1,0 +1,5 @@
+venv
+__pycache__
+referencia
+src\modules\__pycache__
+src\funcs\__pycache__
