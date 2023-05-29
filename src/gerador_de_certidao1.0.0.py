@@ -1,4 +1,5 @@
 from funcs import geradores
+from modules import caminhos
 
 data_emissao = '03/05/2023'
 data_validade = '02/06/2023'
@@ -17,4 +18,4 @@ endereco = 'RUA Jogo do Carneiro, 157 - null - Saúde'
 municipio_uf = 'Salvador / BA'
 geradores.gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, inscricao_municipal=inscricao_municipal, razao_social=razao_social, endereco=endereco, municipio_uf=municipio_uf, data_emissao=data_emissao, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
 import os
-os.startfile('CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf')
+os.startfile(f'{caminhos.resultado}/CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf')

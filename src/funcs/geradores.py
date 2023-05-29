@@ -1,11 +1,13 @@
 from PIL import Image
-from static.variaveis import *
+from static.img import *
+from static.cores import *
+from static.fonts import *
+from modules import caminhos
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
-
 
 pdfmetrics.registerFont(TTFont('font1', font_principal))
 pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
@@ -26,7 +28,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     """
-    cnv = canvas.Canvas('CERTIDAO POSITIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO POSITIVA.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -131,7 +133,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - data_validade: str - A data de validade da certidão.
     - codigo_verificacao: str - O código de verificação da certidão.
     """
-    cnv = canvas.Canvas('CERTIDAO NEGATIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO NEGATIVA.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -247,7 +249,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     - data_validade (str): Data de validade da certidão.
     - codigo_verificacao (str): Código de verificação da certidão.
     """
-    cnv = canvas.Canvas('CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
+    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
