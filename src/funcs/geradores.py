@@ -79,6 +79,10 @@ def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, enderec
     cnv.drawString(x=x, y=y, charSpace=0.3, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
     cnv.drawString(x=x, y=y-15, charSpace=0.45, text='GOB-BA, sobre a A R L S acima identificada são insuficientes para a emissão de Certidão')
     cnv.drawString(x=x, y=y-30, charSpace=0.3, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    x = 290
+    y = 375
+    cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
+    cnv.drawCentredString(x=x, y=y-15, text='Para consultar sua situação fiscal solicite seu extrato.')
     
 
     cnv.save()
