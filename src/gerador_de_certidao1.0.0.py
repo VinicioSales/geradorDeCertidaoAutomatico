@@ -1,5 +1,5 @@
-from funcs import geradores
-from modules import caminhos
+from backEnd.funcs import geradores
+from backEnd.modules import caminhos
 
 data_emissao = '03/05/2023'
 data_validade = '02/06/2023'
