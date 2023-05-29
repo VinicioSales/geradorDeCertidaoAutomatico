@@ -15,6 +15,6 @@ inscricao_municipal = '22067400525'
 razao_social = 'LOJA MACONICA 02 DE JULHO Nº 1421*'
 endereco = 'RUA Jogo do Carneiro, 157 - null - Saúde'
 municipio_uf = 'Salvador / BA'
-geradores.gerar_certidao_negativa(cnpj_cpf=cnpj_cpf, inscricao_municipal=inscricao_municipal, razao_social=razao_social, endereco=endereco, municipio_uf=municipio_uf, data_emissao=data_emissao, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
+geradores.gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, inscricao_municipal=inscricao_municipal, razao_social=razao_social, endereco=endereco, municipio_uf=municipio_uf, data_emissao=data_emissao, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
 import os
-os.startfile('CERTIDAO NEGATIVA.pdf')
+os.startfile('CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf')

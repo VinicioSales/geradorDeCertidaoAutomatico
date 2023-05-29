@@ -233,7 +233,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_emissao:str, data_validade:str, codigo_verificacao: str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_emissao:str, data_validade:str, codigo_verificacao: str):
     """
     Gera uma certidão negativa de débitos.
 
@@ -249,7 +249,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - data_validade: str - A data de validade da certidão.
     - codigo_verificacao: str - O código de verificação da certidão.
     """
-    cnv = canvas.Canvas('CERTIDAO NEGATIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas('CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -304,6 +304,10 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')    
     cnv.setFont('font1', 10)
+    cnv.setFillColor(amarelo)
+    tamanho_string = len(inscricao_municipal)
+    cnv.roundRect(x=x+142, y=y-19, width=tamanho_string*6, height=15, radius=3, stroke = 0, fill=1)
+    cnv.setFillColor(preto)    
     cnv.drawString(x=x+145, y=y-15, text=inscricao_municipal)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
@@ -347,8 +351,17 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
+    cnv.setFillColor(amarelo)
+    cnv.roundRect(x=x-125, y=y-3, width=250, height=12, radius=3, stroke = 0, fill=1)
+    cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
+    cnv.setFillColor(amarelo)
+    cnv.roundRect(x=x-100, y=y-16, width=200, height=12, radius=3, stroke = 0, fill=1)
+    cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
+    cnv.setFillColor(amarelo)
+    cnv.roundRect(x=x-145, y=y-26, width=288, height=12, radius=3, stroke = 0, fill=1)
+    cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
     cnv.save()
