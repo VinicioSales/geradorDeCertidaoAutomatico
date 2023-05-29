@@ -3,7 +3,6 @@ from static.variaveis import *
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
-from reportlab.lib.colors import HexColor
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
 
@@ -26,7 +25,9 @@ def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, enderec
 
     #NOTE - Borda
     largura, altura = A4
+    cnv.setLineWidth(1.1)
     cnv.roundRect(20, 20, largura-40, altura-40, 10, stroke=1, fill=0)
+    cnv.line(x1=20, y1=100, x2=575, y2=100)
 
     #NOTE - Cabeçalho
     x = 120
@@ -40,6 +41,12 @@ def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, enderec
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
+    img = Image.open(qr_code)
+    width, height = img.size
+    escala = 0.07
+    width = width * escala
+    height = height * escala
+    cnv.drawImage(qr_code, x=495, y=730, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -83,7 +90,14 @@ def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, enderec
     y = 375
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
     cnv.drawCentredString(x=x, y=y-15, text='Para consultar sua situação fiscal solicite seu extrato.')
-    
+
+    #NOTE - Rodapé
+    x = 300
+    y = 70
+    cnv.setFont('font1_bold', 8)
+    cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
+    cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
+    cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
     cnv.save()
 
