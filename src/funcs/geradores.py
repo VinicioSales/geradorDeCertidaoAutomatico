@@ -38,6 +38,13 @@ def gerar_certidao_positiva():
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
 
+    #NOTE - Título
+    x = 300
+    y = 700
+    cnv.setFont('font1_bold', 12)
+    cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA DE DÉBITOS')
+    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BA')
+
 
     cnv.save()
 
