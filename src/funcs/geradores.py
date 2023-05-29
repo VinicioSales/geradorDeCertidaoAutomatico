@@ -54,12 +54,12 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
-    img = Image.open(qr_code)
+    img = Image.open(qr_code1)
     width, height = img.size
     escala = 0.07
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code1, x=495, y=730, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -159,12 +159,12 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
-    img = Image.open(qr_code)
+    img = Image.open(qr_code1)
     width, height = img.size
     escala = 0.07
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code1, x=495, y=730, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -235,19 +235,17 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
 #NOTE - gerar_certidao_negativa
 def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_emissao:str, data_validade:str, codigo_verificacao: str):
     """
-    Gera uma certidão negativa de débitos.
-
-    Esta função utiliza as informações fornecidas para gerar um documento PDF contendo a certidão negativa de débitos.
+    Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do Grande Oriente do Brasil - Bahia.
 
     Parâmetros:
-    - cnpj_cpf: str - O número do CNPJ ou CPF do solicitante.
-    - inscricao_municipal: str - O número da inscrição municipal do solicitante.
-    - razao_social: str - O nome ou razão social do solicitante.
-    - endereco: str - O endereço do solicitante.
-    - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
-    - data_emissao: str - A data de emissão da certidão.
-    - data_validade: str - A data de validade da certidão.
-    - codigo_verificacao: str - O código de verificação da certidão.
+    - cnpj_cpf (str): CNPJ ou CPF do solicitante.
+    - inscricao_municipal (str): Inscrição municipal do solicitante.
+    - razao_social (str): Nome ou razão social do solicitante.
+    - endereco (str): Endereço do solicitante.
+    - municipio_uf (str): Município e UF do solicitante.
+    - data_emissao (str): Data de emissão da certidão.
+    - data_validade (str): Data de validade da certidão.
+    - codigo_verificacao (str): Código de verificação da certidão.
     """
     cnv = canvas.Canvas('CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
@@ -277,12 +275,12 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
-    img = Image.open(qr_code)
+    img = Image.open(qr_code2)
     width, height = img.size
     escala = 0.07
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code2, x=495, y=730, width=width, height=height)
 
     #NOTE - Título
     x = 300
