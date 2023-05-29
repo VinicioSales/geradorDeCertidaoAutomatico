@@ -12,7 +12,20 @@ pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
-def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, endereco, municipio_uf):
+#NOTE - gerar_certidao_positiva
+def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
+    """
+    Gera uma certidão positiva de débitos.
+
+    Esta função utiliza as informações fornecidas para gerar um documento PDF contendo a certidão positiva de débitos.
+
+    Parâmetros:
+    - cnpj_cpf: str - O número do CNPJ ou CPF do solicitante.
+    - inscricao_municipal: str - O número da inscrição municipal do solicitante.
+    - razao_social: str - O nome ou razão social do solicitante.
+    - endereco: str - O endereço do solicitante.
+    - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
+    """
     cnv = canvas.Canvas('CERTIDAO POSITIVA.pdf', pagesize=A4)
     
     #NOTE - logo
