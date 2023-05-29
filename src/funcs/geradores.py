@@ -5,12 +5,15 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.lib.colors import HexColor
 from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.lib.styles import getSampleStyleSheet
 
 
 pdfmetrics.registerFont(TTFont('font1', font_principal))
 pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
+styles = getSampleStyleSheet()
+style = styles["Normal"]
 
-def gerar_certidao_positiva():
+def gerar_certidao_positiva(cnpj_cpf, inscricao_municipal, razao_social, endereco, municipio_uf):
     cnv = canvas.Canvas('CERTIDAO POSITIVA.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -45,6 +48,38 @@ def gerar_certidao_positiva():
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA DE DÉBITOS')
     cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BA')
 
+    #NOTE - Dados
+    x = 35
+    y = 605
+    cnv.setFont('font1_bold', 11)
+    cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
+    cnv.setFont('font1', 10)
+    cnv.drawString(x=x+145, y=y, text=cnpj_cpf)
+    cnv.setFont('font1_bold', 11)
+    cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')
+    cnv.setFont('font1', 10)
+    cnv.drawString(x=x+145, y=y-15, text=inscricao_municipal)
+    cnv.setFont('font1_bold', 11)
+    cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
+    cnv.setFont('font1', 10)
+    cnv.drawString(x=x+145, y=y-30, text=razao_social)
+    cnv.setFont('font1_bold', 11)
+    cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
+    cnv.setFont('font1', 10)
+    cnv.drawString(x=x+145, y=y-45, text=endereco)
+    cnv.setFont('font1_bold', 11)
+    cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
+    cnv.setFont('font1', 10)
+    cnv.drawString(x=x+145, y=y-60, text=municipio_uf)
+
+    #NOTE - Texto
+    x = 35
+    y = 490
+    cnv.setFont('font1', 12)
+    cnv.drawString(x=x, y=y, charSpace=0.3, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
+    cnv.drawString(x=x, y=y-15, charSpace=0.45, text='GOB-BA, sobre a A R L S acima identificada são insuficientes para a emissão de Certidão')
+    cnv.drawString(x=x, y=y-30, charSpace=0.3, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    
 
     cnv.save()
 
