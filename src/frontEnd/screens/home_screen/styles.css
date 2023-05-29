@@ -1,0 +1,14 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.mainFrame {
+    width: 50%;
+    height: 50%;
+    background-color: #C7D3F2;
+    border: none;
+}
