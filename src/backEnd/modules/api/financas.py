@@ -4,23 +4,21 @@ from backEnd.modules.data.credenciais import credenciais
 
 app_key = credenciais['app_key']
 app_secret = credenciais['app_secret']
-url = 'https://app.omie.com.br/api/v1/geral/clientes/'
+url = 'https://app.omie.com.br/api/v1/financas/contareceber/'
 
-#NOTE - listar_clientes
-def listar_clientes(pagina: int):
+def listar_contas_receber(pagina: int):
     """
-    Função para listar os clientes.
+    Função para listar as contas a receber.
     
     Args:
-        pagina (int): O número da página atual.
-        total_de_paginas (int): O número total de páginas.
-    
+        pagina (int): O número da página a ser consultada.
+
     Returns:
         A resposta da requisição feita à API.
 
     """
     payload = json.dumps({
-                            "call": "ListarClientes",
+                            "call": "ListarContasReceber",
                             "app_key": app_key,
                             "app_secret": app_secret,
                             "param":[
