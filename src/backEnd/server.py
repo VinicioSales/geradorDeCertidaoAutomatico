@@ -1,7 +1,11 @@
+import os
 from flask import Flask, request, render_template
 from modules.funcs.funcs import *
 
-app = Flask(__name__)
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
+
+app = Flask(__name__, template_folder=template_dir)
+
 
 @app.route('/')
 def index():
