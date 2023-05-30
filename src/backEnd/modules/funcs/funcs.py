@@ -31,7 +31,8 @@ def get_codigo_clientes():
 
 #NOTE - get_contas_receber_clientes
 def get_contas_receber_clientes():
-    dict_contas_receber_clientes = {}
+    dict_contas_receber_atrasadas_clientes = {}
+    dic_conta_atrasada = {}
     pagina = 1
     total_de_paginas = 1
     while pagina <= total_de_paginas:
@@ -39,13 +40,16 @@ def get_contas_receber_clientes():
         response = response.json()
         conta_receber_cadastro = response['conta_receber_cadastro']
         for conta_receber in conta_receber_cadastro:
+            dic_conta_atrasada = {}
             codigo_cliente_fornecedor = conta_receber['codigo_cliente_fornecedor']
-            if codigo_cliente_fornecedor == '6550693870':
-                continue
-            if codigo_cliente_fornecedor in dict_contas_receber_clientes:
-                dict_contas_receber_clientes[codigo_cliente_fornecedor] += 1
-            else:
-                dict_contas_receber_clientes[codigo_cliente_fornecedor] = 1
+            status_titulo = conta_receber['status_titulo']
+            if status_titulo == "ATRASADO":
+                dic_conta_atrasada['atrasada'] = True
+                dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+            elif codigo_cliente_fornecedor not in dict_contas_receber_atrasadas_clientes:
+                dic_conta_atrasada['atrasada'] = False
+                dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+        
         pagina = pagina + 1
 
-    return dict_contas_receber_clientes
+    return dict_contas_receber_atrasadas_clientes
