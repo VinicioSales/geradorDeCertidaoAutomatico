@@ -63,14 +63,11 @@ def get_contas_receber_clientes():
 
     return dict_contas_receber_atrasadas_clientes
 
-
-def script():
-    dict_codigo_clientes =  get_codigo_clientes()
-    dict_status_contas_receber_clientes = get_contas_receber_clientes()
-
-    razao_social_pesquisado = 'Aprender Escola de Idiomas'
-
+#NOTE - script
+def script(razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
     razao_social_pesquisado = unidecode(razao_social_pesquisado).lower()
+    # dict_codigo_clientes =  get_codigo_clientes()
+    # dict_status_contas_receber_clientes = get_contas_receber_clientes()
 
     for cliente in dict_codigo_clientes.items():
         razao_social = cliente[0]
