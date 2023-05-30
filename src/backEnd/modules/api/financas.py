@@ -1,6 +1,6 @@
 import json
 import requests
-from backEnd.modules.data.credenciais import credenciais
+from modules.data.credenciais import credenciais
 
 app_key = credenciais['app_key']
 app_secret = credenciais['app_secret']
