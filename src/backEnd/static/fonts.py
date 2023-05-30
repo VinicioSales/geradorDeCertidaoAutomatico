@@ -1,4 +1,4 @@
-from backEnd.modules import caminhos
+from modules.caminhos import *
 
-font_principal = f'{caminhos.fonts}/arial.ttf'
-font_principal_bold = f'{caminhos.fonts}/G_ari_bd.ttf'
+font_principal = f'{fonts}/arial.ttf'
+font_principal_bold = f'{fonts}/G_ari_bd.ttf'

@@ -1,7 +1,9 @@
 import json
+from unidecode import unidecode
 from modules.api.clientes import *
 from modules.api.financas import *
-from unidecode import unidecode
+from funcs.geradores import *
+
 
 #NOTE - get_codigo_clientes
 def get_codigo_clientes():
@@ -29,6 +31,40 @@ def get_codigo_clientes():
         pagina = pagina + 1
 
     return dict_codigo_cliente_omie
+
+#NOTE - get_dados_clientes
+def get_dados_clientes():
+    """
+    Itera sobre várias páginas para recuperar os dados dos clientes utilizando a função `listar_clientes`.
+
+    Returns:
+        Um dicionário contendo os dados dos clientes, onde a chave é a razão social e o valor é um dicionário com os dados do cliente.
+
+    """
+    dict_dados_clientes = {}
+    pagina = 1
+    total_de_paginas = 1
+    while pagina <= total_de_paginas:
+        response = listar_clientes(pagina=pagina)
+        response = response.json()
+        clientes_cadastro = response['clientes_cadastro']
+        total_de_paginas = int(response['total_de_paginas'])
+        for cliente in clientes_cadastro:
+            dados_cliente = {}
+            dados_cliente['razao_social'] = cliente['razao_social']
+            dados_cliente['codigo_cliente_omie'] =  cliente['codigo_cliente_omie']
+            dados_cliente['cnpj_cpf'] =  cliente['cnpj_cpf']
+            dados_cliente['inscricao_municipal'] =  cliente['inscricao_municipal']
+            dados_cliente['endereco'] =  cliente['endereco']
+            dados_cliente['endereco_numero'] =  cliente['endereco_numero']
+            dados_cliente['bairro'] =  cliente['bairro']
+            dados_cliente['cidade'] =  cliente['cidade']
+
+            razao_social = cliente['razao_social']
+            dict_dados_clientes[razao_social] = dados_cliente
+        pagina = pagina + 1
+
+    return dict_dados_clientes
 
 #NOTE - get_contas_receber_clientes
 def get_contas_receber_clientes():
@@ -64,10 +100,8 @@ def get_contas_receber_clientes():
     return dict_contas_receber_atrasadas_clientes
 
 #NOTE - script
-def script(razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
+def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
     razao_social_pesquisado = unidecode(razao_social_pesquisado).lower()
-    # dict_codigo_clientes =  get_codigo_clientes()
-    # dict_status_contas_receber_clientes = get_contas_receber_clientes()
 
     for cliente in dict_codigo_clientes.items():
         razao_social = cliente[0]
@@ -80,8 +114,34 @@ def script(razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_rec
 
     for cliente in dict_status_contas_receber_clientes.items():
         codigo_cliente_omie = cliente[0]
-        a_vencer = cliente[1]
-        a_vencer = a_vencer['atrasada']
+        atrasada = cliente[1]
+        atrasada = atrasada['atrasada']
         if codigo_cliente_omie == codigo_cliente_omie_pesquisado:
-            print(a_vencer)
+            print(f'a_vencer: {atrasada}')
             break
+    
+    for cliente  in dict_dados_clientes.items():
+        codigo_cliente_omie_tupla = str(cliente[0])
+        if codigo_cliente_omie_tupla == codigo_cliente_omie:
+            dados_cliente = cliente[1]
+            razao_social = dados_cliente['razao_social']
+            codigo_cliente_omie = dados_cliente['codigo_cliente_omie']
+            cnpj_cpf = dados_cliente['cnpj_cpf']
+            inscricao_municipal = dados_cliente['inscricao_municipal']
+            endereco = dados_cliente['endereco']
+            endereco_numero = dados_cliente['endereco_numero']
+            bairro = dados_cliente['bairro']
+            cidade = dados_cliente['cidade']
+            endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
+            break
+    
+    #FIXME - REMOVER
+    codigo_verificacao = '123'
+
+    if atrasada:
+        gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
+    if not atrasada:
+        gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
+
+
+    
