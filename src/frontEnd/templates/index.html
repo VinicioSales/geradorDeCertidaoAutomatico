@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Relatórios</title>
-    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
 </head>
 <body>
     <div class="mainFrame">
@@ -13,6 +13,9 @@
             <div class="cliente">
                 <label for="nome">Nome do cliente:</label>
                 <input type="text" id="razaoSocial" name="razaoSocial" placeholder="Digite o nome do cliente">
+            </div>
+            <div>
+                <label></label>
             </div>
             <button id="gerarCertidao">Gerar Certidão</button>
         </form>

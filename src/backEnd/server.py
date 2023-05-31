@@ -3,8 +3,9 @@ from flask import Flask, request, render_template
 from modules.funcs.funcs import *
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
+static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'static'))
 
-app = Flask(__name__, template_folder=template_dir, static_folder='frontEnd/static')
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 dict_codigo_clientes =  get_codigo_clientes()
 dict_status_contas_receber_clientes = get_contas_receber_clientes()
