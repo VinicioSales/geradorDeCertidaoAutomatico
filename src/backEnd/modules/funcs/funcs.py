@@ -148,11 +148,18 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
     
     #FIXME - REMOVER
     codigo_verificacao = '123'
+    data_validade = '31/05/2023'
 
     if atrasada:
-        gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
+        #FIXME - REMOVER
+        print(f'gerar_certidao_negativa')
+
+        gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
     if not atrasada:
-        gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
+        #FIXME - REMOVER
+        print(f'gerar_certidao_positiva_negativa')
+        
+        gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, data_validade=data_validade, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
 
 
     

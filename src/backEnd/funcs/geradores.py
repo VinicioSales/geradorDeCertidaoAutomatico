@@ -1,5 +1,6 @@
 from PIL import Image
 from static.img import *
+from datetime import date
 from static.cores import *
 from static.fonts import *
 from modules import caminhos
@@ -8,6 +9,10 @@ from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
+
+
+data_atual = date.today()
+data_atual = data_atual.strftime('%d/%m/%Y')
 
 pdfmetrics.registerFont(TTFont('font1', font_principal))
 pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
@@ -117,7 +122,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_emissao:str, data_validade:str, codigo_verificacao: str):
+def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str, codigo_verificacao: str):
     """
     Gera uma certidão negativa de débitos.
 
@@ -214,7 +219,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='DATA EMISSÃO:')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y, text=data_emissao)
+    cnv.drawString(x=x+93, y=y, text=data_atual)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='VÁLIDO ATÉ: ')
     cnv.setFont('font1', 11)
@@ -235,7 +240,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_emissao:str, data_validade:str, codigo_verificacao: str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str, codigo_verificacao: str):
     """
     Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do Grande Oriente do Brasil - Bahia.
 
@@ -337,7 +342,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='DATA EMISSÃO:')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y, text=data_emissao)
+    cnv.drawString(x=x+93, y=y, text=data_atual)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='VÁLIDO ATÉ: ')
     cnv.setFont('font1', 11)
