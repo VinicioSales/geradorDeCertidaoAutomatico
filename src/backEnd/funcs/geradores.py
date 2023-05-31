@@ -122,7 +122,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str, codigo_verificacao: str):
+def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str):
     """
     Gera uma certidão negativa de débitos.
 
@@ -136,7 +136,6 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     - data_emissao: str - A data de emissão da certidão.
     - data_validade: str - A data de validade da certidão.
-    - codigo_verificacao: str - O código de verificação da certidão.
     """
     cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO NEGATIVA.pdf', pagesize=A4)
     
@@ -225,9 +224,6 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1', 11)
     cnv.drawString(x=x+93, y=y-15, text=data_validade)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='CÓDIGO DE VERIFICAÇÃO:')
-    cnv.setFont('font1', 11)
-    cnv.drawString(x=x+150, y=y-30, text=codigo_verificacao)
 
     #NOTE - Rodapé
     x = 300
@@ -240,7 +236,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str, codigo_verificacao: str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str):
     """
     Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do Grande Oriente do Brasil - Bahia.
 
@@ -252,7 +248,6 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     - municipio_uf (str): Município e UF do solicitante.
     - data_emissao (str): Data de emissão da certidão.
     - data_validade (str): Data de validade da certidão.
-    - codigo_verificacao (str): Código de verificação da certidão.
     """
     cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
@@ -348,9 +343,6 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.setFont('font1', 11)
     cnv.drawString(x=x+93, y=y-15, text=data_validade)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='CÓDIGO DE VERIFICAÇÃO:')
-    cnv.setFont('font1', 11)
-    cnv.drawString(x=x+150, y=y-30, text=codigo_verificacao)
 
     #NOTE - Rodapé
     x = 300
