@@ -1,21 +1,8 @@
-import re
+import shutil
+import os
 
-def remover_caracteres_especiais(cpf_cnpj):
-    """
-    Remove caracteres especiais de um CPF ou CNPJ.
+diretorio_downloads = os.path.join(os.path.expanduser('~'), 'Documents')
+print(diretorio_downloads)
+print(type(diretorio_downloads))
 
-    Args:
-        cpf_cnpj (str): CPF ou CNPJ a ser processado.
-
-    Returns:
-        str: CPF ou CNPJ sem caracteres especiais.
-
-    """
-    cpf_cnpj = re.sub(r'[^0-9]', '', cpf_cnpj)
-    
-    return cpf_cnpj
-
-cpf_cnpj = '11.111.111/1111-11'
-cpf_cnpj = remover_caracteres_especiais(cpf_cnpj)
-
-print(cpf_cnpj)
+shutil.copy2(r'C:\Users\Parceiro\Meu Drive\Junior\Python\Omie\gerador_de_certidao_GRANDE_ORIENTE_DO_BRASIL\README.md', fr'{diretorio_downloads}\README.md')

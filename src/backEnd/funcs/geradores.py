@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 from static.img import *
 from datetime import date
@@ -19,6 +20,8 @@ pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
+diretorio_documentos = os.path.join(os.path.expanduser('~'), 'Documents')
+
 #NOTE - gerar_certidao_positiva
 def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
     """
@@ -33,7 +36,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     """
-    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO POSITIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -137,7 +140,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - data_emissao: str - A data de emissão da certidão.
     - data_validade: str - A data de validade da certidão.
     """
-    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO NEGATIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -249,7 +252,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     - data_emissao (str): Data de emissão da certidão.
     - data_validade (str): Data de validade da certidão.
     """
-    cnv = canvas.Canvas(f'{caminhos.resultado}/CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)

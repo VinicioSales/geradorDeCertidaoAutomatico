@@ -1,8 +1,10 @@
 import re
+import os
 from funcs.geradores import *
 from unidecode import unidecode
 from modules.api.clientes import *
 from modules.api.financas import *
+
 
 
 
