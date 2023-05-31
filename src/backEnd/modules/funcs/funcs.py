@@ -60,8 +60,8 @@ def get_dados_clientes():
             dados_cliente['bairro'] =  cliente['bairro']
             dados_cliente['cidade'] =  cliente['cidade']
 
-            razao_social = cliente['razao_social']
-            dict_dados_clientes[razao_social] = dados_cliente
+            codigo_cliente_omie = cliente['codigo_cliente_omie']
+            dict_dados_clientes[codigo_cliente_omie] = dados_cliente
         pagina = pagina + 1
 
     return dict_dados_clientes
@@ -121,8 +121,10 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             break
     
     for cliente  in dict_dados_clientes.items():
-        codigo_cliente_omie_tupla = str(cliente[0])
-        if codigo_cliente_omie_tupla == codigo_cliente_omie:
+        print(f'cliente: {cliente}')
+        codigo_cliente_omie_tupla = cliente[0]
+        print(f'codigo_cliente_omie_tupla: {codigo_cliente_omie_tupla} - codigo_cliente_omie_pesquisado: {codigo_cliente_omie_pesquisado}')
+        if codigo_cliente_omie_tupla == codigo_cliente_omie_pesquisado:
             dados_cliente = cliente[1]
             razao_social = dados_cliente['razao_social']
             codigo_cliente_omie = dados_cliente['codigo_cliente_omie']
@@ -134,6 +136,15 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             cidade = dados_cliente['cidade']
             endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
             break
+    print(f'razao_social: {razao_social}')
+    print(f'codigo_cliente_omie: {codigo_cliente_omie}')
+    print(f'cnpj_cpf: {cnpj_cpf}')
+    print(f'inscricao_municipal: {inscricao_municipal}')
+    print(f'endereco: {endereco}')
+    print(f'endereco_numero: {endereco_numero}')
+    print(f'bairro: {bairro}')
+    print(f'cidade: {cidade}')
+    print(f'endereco_completo: {endereco_completo}')
     
     #FIXME - REMOVER
     codigo_verificacao = '123'
