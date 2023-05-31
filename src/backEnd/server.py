@@ -18,7 +18,9 @@ def index():
 @app.route('/gerar_certidao', methods=['POST'])
 def gerar_certidao():
     razao_social_pesquisado = request.form.get('razaoSocial')
-    script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
+    data_validade = request.form.get('dataValidade')
+    print(f'data_validade: {data_validade}')
+    script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, data_validade=data_validade, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
     return 'Requisição feita com sucesso para o cliente: ' + razao_social_pesquisado
 
 if __name__ == '__main__':

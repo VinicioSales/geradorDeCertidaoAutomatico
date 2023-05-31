@@ -116,7 +116,7 @@ def remover_caracteres_especiais(cpf_cnpj):
     return cpf_cnpj
 
 #SECTION - script
-def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
+def script(dict_dados_clientes, razao_social_pesquisado, data_validade, dict_codigo_clientes, dict_status_contas_receber_clientes):
     codigo_cliente_omie = None
     codigo_cliente_omie_tupla = None
     atrasada = None
@@ -159,9 +159,6 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
                 break
         cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
-
-        #FIXME - REMOVER
-        data_validade = '31/05/2023'
 
         if atrasada == True:
 
