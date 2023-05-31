@@ -21,7 +21,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
 }
 
 .subRightFrame > * {
@@ -34,7 +33,7 @@ body {
     width: 300px;
     height: 30px;
     border: none;
-    border-bottom: 1px solid #18978F;
+    border-bottom: 1px solid #000736;
     margin: 10px;
     padding: 10px;
     font-size: 15px;
@@ -57,14 +56,26 @@ body {
     color: #000736;
 }
 
+.divTitulo{
+    margin-top: 10%;
+}
+
 .titulo {
     font-family: 'Bungee', cursive;
     font-size: 26px;
     color: #000736;
+    text-align: center;
+    margin-left: 10%;
 }
+
 
 #razao_social {
     font-family: 'Bungee', cursive;
+}
+
+.divButton {
+    margin-top: 2%;
+    margin-left: 14%;
 }
 
 #button {

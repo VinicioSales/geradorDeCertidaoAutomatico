@@ -10,13 +10,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    
 </head>
 <body>
     <div class="leftFrame">
 
     </div>
     <div class="rightFrame">
-        <div>
+        <div class="divTitulo">
             <label class="titulo">Gerador de Certidão</label>
             
         </div>
@@ -26,12 +27,15 @@
                     <input class="input" type="text" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
                 </div>
                 <div>
-                    <input class="input" type="date" id="dataValidade" name="dataValidade">
+                    <input class="input" type="text" id="dataValidade" name="dataValidade" placeholder="Data de validade">
                 </div>
-                <button id="button">Gerar Certidão</button>
+                <div class="divButton">
+                    <button id="button">Gerar Certidão</button>
+                </div>
             </form>
         </div>
         
     </div>
+    <script src="../scripts/index.js"></script>
 </body>
 </html>
