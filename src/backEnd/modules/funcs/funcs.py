@@ -1,8 +1,9 @@
-import json
+import re
+from funcs.geradores import *
 from unidecode import unidecode
 from modules.api.clientes import *
 from modules.api.financas import *
-from funcs.geradores import *
+
 
 
 #NOTE - get_codigo_clientes
@@ -52,7 +53,6 @@ def get_dados_clientes():
         for cliente in clientes_cadastro:
             dados_cliente = {}
             dados_cliente['razao_social'] = cliente['razao_social']
-            dados_cliente['codigo_cliente_omie'] =  cliente['codigo_cliente_omie']
             dados_cliente['cnpj_cpf'] =  cliente['cnpj_cpf']
             dados_cliente['inscricao_municipal'] =  cliente['inscricao_municipal']
             dados_cliente['endereco'] =  cliente['endereco']
@@ -99,10 +99,31 @@ def get_contas_receber_clientes():
 
     return dict_contas_receber_atrasadas_clientes
 
-#NOTE - script
+#NOTE - remover_caracteres_especiais
+def remover_caracteres_especiais(cpf_cnpj):
+    """
+    Remove caracteres especiais de um CPF ou CNPJ.
+
+    Args:
+        cpf_cnpj (str): CPF ou CNPJ a ser processado.
+
+    Returns:
+        str: CPF ou CNPJ sem caracteres especiais.
+
+    """
+    cpf_cnpj = re.sub(r'[^0-9]', '', cpf_cnpj)
+    
+    return cpf_cnpj
+
+#SECTION - script
 def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
+    codigo_cliente_omie = None
+    codigo_cliente_omie_tupla = None
+    atrasada = None
+
     razao_social_pesquisado = unidecode(razao_social_pesquisado).lower()
 
+    #NOTE - Get codigo_cliente_omie
     for cliente in dict_codigo_clientes.items():
         razao_social = cliente[0]
         razao_social = unidecode(razao_social).lower()
@@ -110,56 +131,57 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
         if razao_social == razao_social_pesquisado:
             codigo_cliente_omie_pesquisado = codigo_cliente_omie
             break
-    print(f'codigo_cliente_omie_pesquisado: {codigo_cliente_omie_pesquisado}')
-
-    for cliente in dict_status_contas_receber_clientes.items():
-        codigo_cliente_omie = cliente[0]
-        atrasada = cliente[1]
-        atrasada = atrasada['atrasada']
-        if codigo_cliente_omie == codigo_cliente_omie_pesquisado:
-            print(f'a_vencer: {atrasada}')
-            break
+        else:
+            codigo_cliente_omie_pesquisado = None
     
-    for cliente  in dict_dados_clientes.items():
-        print(f'cliente: {cliente}')
-        codigo_cliente_omie_tupla = cliente[0]
-        print(f'codigo_cliente_omie_tupla: {codigo_cliente_omie_tupla} - codigo_cliente_omie_pesquisado: {codigo_cliente_omie_pesquisado}')
-        if codigo_cliente_omie_tupla == codigo_cliente_omie_pesquisado:
-            dados_cliente = cliente[1]
-            razao_social = dados_cliente['razao_social']
-            codigo_cliente_omie = dados_cliente['codigo_cliente_omie']
-            cnpj_cpf = dados_cliente['cnpj_cpf']
-            inscricao_municipal = dados_cliente['inscricao_municipal']
-            endereco = dados_cliente['endereco']
-            endereco_numero = dados_cliente['endereco_numero']
-            bairro = dados_cliente['bairro']
-            cidade = dados_cliente['cidade']
-            endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
-            break
-    print(f'razao_social: {razao_social}')
-    print(f'codigo_cliente_omie: {codigo_cliente_omie}')
-    print(f'cnpj_cpf: {cnpj_cpf}')
-    print(f'inscricao_municipal: {inscricao_municipal}')
-    print(f'endereco: {endereco}')
-    print(f'endereco_numero: {endereco_numero}')
-    print(f'bairro: {bairro}')
-    print(f'cidade: {cidade}')
-    print(f'endereco_completo: {endereco_completo}')
-    
-    #FIXME - REMOVER
-    codigo_verificacao = '123'
-    data_validade = '31/05/2023'
-
-    if atrasada:
-        #FIXME - REMOVER
-        print(f'gerar_certidao_negativa')
-
-        gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
-    if not atrasada:
-        #FIXME - REMOVER
-        print(f'gerar_certidao_positiva_negativa')
+    if codigo_cliente_omie_pesquisado != None:
+        #NOTE - Get Atrasada
+        for cliente in dict_status_contas_receber_clientes.items():
+            codigo_cliente_omie_conta_receber = cliente[0]
+            atrasada = cliente[1]
+            atrasada = atrasada['atrasada']
+            if codigo_cliente_omie_conta_receber == codigo_cliente_omie_pesquisado:
+                break
+            else: atrasada = None
         
-        gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, data_validade=data_validade, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
 
+        for cliente  in dict_dados_clientes.items():
+            codigo_cliente_omie_tupla = cliente[0]
+            if codigo_cliente_omie_tupla == codigo_cliente_omie_pesquisado:
+                dados_cliente = cliente[1]
+                razao_social = dados_cliente['razao_social']
+                cnpj_cpf = dados_cliente['cnpj_cpf']
+                inscricao_municipal = dados_cliente['inscricao_municipal']
+                endereco = dados_cliente['endereco']
+                endereco_numero = dados_cliente['endereco_numero']
+                bairro = dados_cliente['bairro']
+                cidade = dados_cliente['cidade']
+                endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
+                break
+        cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
+
+        #FIXME - REMOVER
+        codigo_verificacao = '123'
+        data_validade = '31/05/2023'
+
+        if atrasada == True:
+
+            #FIXME - REMOVER
+            print(f'gerar_certidao_negativa')
+
+            gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, data_validade=data_validade, codigo_verificacao=codigo_verificacao)
+        elif atrasada == False:
+
+            #FIXME - REMOVER
+            print(f'gerar_certidao_positiva_negativa')
+
+            gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, data_validade=data_validade, endereco=endereco_completo, municipio_uf=cidade, codigo_verificacao=codigo_verificacao)
+        elif atrasada == None:
+
+            #FIXME - REMOVER
+            print(f'gerar_certidao_positiva')
+
+            gerar_certidao_positiva(cnpj_cpf=cnpj_cpf, inscricao_municipal=inscricao_municipal, razao_social=razao_social, endereco=endereco, municipio_uf=cidade)
+#!SECTION
 
     
