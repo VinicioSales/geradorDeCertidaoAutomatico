@@ -10,16 +10,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+    
     
 </head>
 <body>
     <div class="leftFrame">
-
     </div>
     <div class="rightFrame">
         <div class="divTitulo">
             <label class="titulo">Gerador de Certidão</label>
-            
         </div>
         <div class="subRightFrame">
             <form action="/gerar_certidao" method="post">
@@ -34,8 +34,6 @@
                 </div>
             </form>
         </div>
-        
     </div>
-    <script src="../scripts/index.js"></script>
 </body>
 </html>
