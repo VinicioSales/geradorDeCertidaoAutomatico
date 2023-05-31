@@ -4,7 +4,6 @@ from static.img import *
 from datetime import date
 from static.cores import *
 from static.fonts import *
-from modules import caminhos
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfbase import pdfmetrics

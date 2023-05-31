@@ -20,8 +20,8 @@ def index():
 def gerar_certidao():
     razao_social_pesquisado = request.form.get('razaoSocial')
     data_validade = request.form.get('dataValidade')
-    print(f'data_validade: {data_validade}')
     script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, data_validade=data_validade, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
+
     return redirect('/')
 
 if __name__ == '__main__':
