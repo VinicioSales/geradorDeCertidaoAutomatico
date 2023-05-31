@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 from modules.funcs.funcs import *
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
@@ -22,6 +22,7 @@ def gerar_certidao():
     print(f'data_validade: {data_validade}')
     script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, data_validade=data_validade, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
     return 'Requisição feita com sucesso para o cliente: ' + razao_social_pesquisado
+    #return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
