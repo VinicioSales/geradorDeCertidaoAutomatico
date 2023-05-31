@@ -6,19 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de Relatórios</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
+    <link rel="stylesheet" href="../static/styles/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="mainFrame">
-        <form action="/gerar_certidao" method="post">
-            <div class="cliente">
-                <label for="nome">Nome do cliente:</label>
-                <input type="text" id="razaoSocial" name="razaoSocial" placeholder="Digite o nome do cliente">
-            </div>
-            <div>
-                <label></label>
-            </div>
-            <button id="gerarCertidao">Gerar Certidão</button>
-        </form>
+    <div class="leftFrame">
+
+    </div>
+    <div class="rightFrame">
+        <div>
+            <label class="titulo">Gerador de Certidão</label>
+            
+        </div>
+        <div class="subRightFrame">
+            <form action="/gerar_certidao" method="post">
+                <div class="cliente">
+                    <input class="input" type="text" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
+                </div>
+                <div>
+                    <input class="input" type="date" id="dataValidade" name="dataValidade">
+                </div>
+                <button id="button">Gerar Certidão</button>
+            </form>
+        </div>
+        
     </div>
 </body>
 </html>
