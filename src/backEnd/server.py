@@ -26,8 +26,7 @@ def index():
 @app.route('/gerar_certidao', methods=['POST'])
 def gerar_certidao():
     razao_social_pesquisado = request.form.get('razaoSocial')
-    data_validade = request.form.get('dataValidade')
-    response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, data_validade=data_validade, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
+    response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
     print(f'response: {response}')
 
     flash(response)
@@ -36,4 +35,4 @@ def gerar_certidao():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    webbrowser.open('http://localhost:5000')
+    #webbrowser.open('http://localhost:5000')

@@ -118,7 +118,7 @@ def remover_caracteres_especiais(cpf_cnpj):
     return cpf_cnpj
 
 #SECTION - script
-def script(dict_dados_clientes, razao_social_pesquisado, data_validade, dict_codigo_clientes, dict_status_contas_receber_clientes):
+def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
     codigo_cliente_omie = None
     codigo_cliente_omie_tupla = None
     atrasada = None
@@ -167,14 +167,14 @@ def script(dict_dados_clientes, razao_social_pesquisado, data_validade, dict_cod
             #FIXME - REMOVER
             print(f'gerar_certidao_negativa')
 
-            gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, data_validade=data_validade)
+            gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade)
             message = f'Cliente ({razao_social}) com contas a receber pendentes'
         elif atrasada == False:
 
             #FIXME - REMOVER
             print(f'gerar_certidao_positiva_negativa')
 
-            gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, data_validade=data_validade, endereco=endereco_completo, municipio_uf=cidade)
+            gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade)
             message = f'Cliente ({razao_social}) Com contas a receber a vencer'
         elif atrasada == None:
 

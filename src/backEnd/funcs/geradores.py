@@ -1,7 +1,7 @@
 import os
+import datetime
 from PIL import Image
 from static.img import *
-from datetime import date
 from static.cores import *
 from static.fonts import *
 from reportlab.pdfgen import canvas
@@ -11,9 +11,21 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
 
 
-data_atual = date.today()
+#NOTE - Data
+data_atual = datetime.date.today()
 data_atual = data_atual.strftime('%d/%m/%Y')
+dias_uteis = 0
+data_atual_2 = datetime.date.today()
+dias_a_somar = 30
+while dias_uteis < dias_a_somar:
+    data_atual_2 += datetime.timedelta(days=1)
+    if data_atual_2.weekday() not in (5, 6):
+        dias_uteis += 1
+data_validade = str(data_atual_2)
+date = datetime.datetime.strptime(data_validade, "%Y-%m-%d")
+data_validade = date.strftime("%d/%m/%Y")
 
+#NOTE - Fontes
 pdfmetrics.registerFont(TTFont('font1', 'arial.ttf'))
 pdfmetrics.registerFont(TTFont('font1_bold', 'ARIBL0.ttf'))
 styles = getSampleStyleSheet()
@@ -125,7 +137,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str):
+def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão negativa de débitos.
 
@@ -138,7 +150,6 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     - data_emissao: str - A data de emissão da certidão.
-    - data_validade: str - A data de validade da certidão.
     """
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA.pdf', pagesize=A4)
     
@@ -240,7 +251,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str, data_validade:str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do Grande Oriente do Brasil - Bahia.
 
@@ -251,7 +262,6 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     - endereco (str): Endereço do solicitante.
     - municipio_uf (str): Município e UF do solicitante.
     - data_emissao (str): Data de emissão da certidão.
-    - data_validade (str): Data de validade da certidão.
     """
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
