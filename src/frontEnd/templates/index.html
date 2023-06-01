@@ -26,21 +26,23 @@
         {% endwith %}
     </div>
     <div class="rightFrame">
-        <div class="divTitulo">
-            <label class="titulo">Gerador de Certidão</label>
-        </div>
         <div class="subRightFrame">
-            <form action="/gerar_certidao" method="post">
-                <div class="cliente">
-                    <input class="input" type="text" id="razaoSocial" name="razaoSocial" placeholder="Razão Social">
-                </div>
-                <div>
-                    <input class="input" type="text" id="dataValidade" name="dataValidade" placeholder="Data de validade">
-                </div>
-                <div class="divButton">
-                    <button id="button">Gerar Certidão</button>
-                </div>
-            </form>
+            <div>
+                <label class="titulo">Gerador de Certidão</label>
+            </div>
+            <div class="formulario">
+                <form action="/gerar_certidao" method="post">
+                    <div>
+                        <input class="input" type="text" name="razaoSocial" placeholder="Razão Social">
+                    </div>
+                    <div>
+                        <input class="input" type="text" name="dataValidade" placeholder="Data de validade">
+                    </div>
+                    <div>
+                        <button id="button">Gerar Certidão</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     
