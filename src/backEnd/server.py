@@ -1,19 +1,15 @@
 import os
-import io
-import sys
 import webbrowser
 import threading
 from modules.funcs.funcs import *
 from flask import Flask, request, render_template, redirect, flash
 
-# buffer = io.StringIO()
-# sys.stdout = buffer
-# sys.stderr = buffer
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'static'))
 
 app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
+
 app.secret_key = 'chave_secreta'
 
 dict_codigo_clientes =  get_codigo_clientes()

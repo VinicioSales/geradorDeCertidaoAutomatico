@@ -1,0 +1,2 @@
+pyinstaller --onefile -w --add-data "src/frontEnd/templates;templates" --add-data "src/frontEnd/static;static" src\backEnd\server.py
+pyinstaller --onefile -w --add-data "src/frontEnd/templates;src/frontEnd/templates/templates" --add-data "src/frontEnd/static;src/frontEnd/static/static" src\backEnd\server.py
