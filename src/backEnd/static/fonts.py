@@ -1,4 +1,4 @@
 from modules.caminhos import *
 
-font_principal = f'{fonts}/arial.ttf'
-font_principal_bold = f'{fonts}/G_ari_bd.ttf'
+font_principal = f'{fonts}/DejaVuSans.ttf'
+font_principal_bold = f'{fonts}/DejaVuSans-Bold.ttf'

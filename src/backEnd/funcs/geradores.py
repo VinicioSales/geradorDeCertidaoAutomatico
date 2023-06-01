@@ -40,8 +40,8 @@ img = qr.make_image(fill_color="black", back_color="white")
 img.save(qr_code)
 
 #NOTE - Fontes
-pdfmetrics.registerFont(TTFont('font1', 'DejaVuSans.ttf'))
-pdfmetrics.registerFont(TTFont('font1_bold', 'DejaVuSans-Bold.ttf'))
+pdfmetrics.registerFont(TTFont('font1', font_principal))
+pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
