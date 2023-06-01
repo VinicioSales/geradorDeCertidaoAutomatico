@@ -1,5 +1,4 @@
 import subprocess
-import sys
 import os
 
 venv_path = r'venv'
