@@ -33,7 +33,7 @@ style = styles["Normal"]
 
 diretorio_documentos = os.path.join(os.path.expanduser('~'), 'Documents')
 
-#NOTE - gerar_certidao_positiva
+#SECTION - gerar_certidao_positiva
 def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão positiva de débitos.
@@ -125,13 +125,14 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
     cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
     cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
     cnv.save()
+#!SECTION
 
-#NOTE - gerar_certidao_negativa
+#SECTION - gerar_certidao_negativa
 def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão negativa de débitos.
@@ -234,13 +235,14 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
     cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
     cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
     cnv.save()
+#!SECTION
 
-#NOTE - gerar_certidao_negativa
+#SECTION - gerar_certidao_negativa
 def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do DELEGACIA REGIONAL DO GOB NA BAHIA.
@@ -347,7 +349,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFillColor(amarelo)
     cnv.roundRect(x=x-150, y=y-3, width=300, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
-    cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
     cnv.setFillColor(amarelo)
     cnv.roundRect(x=x-120, y=y-16.5, width=230, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
@@ -358,3 +360,4 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
     cnv.save()
+#!SECTION
