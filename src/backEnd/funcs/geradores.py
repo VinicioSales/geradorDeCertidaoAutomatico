@@ -33,7 +33,6 @@ qr = qrcode.QRCode(
     box_size=10,
     border=1,
 )
-
 qr.add_data(data)
 qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
@@ -45,7 +44,7 @@ pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
-diretorio_documentos = os.path.join(os.path.expanduser('~'), 'Documents')
+diretorio_documentos = os.path.join(os.path.expanduser('~'), 'Downloads')
 
 #SECTION - gerar_certidao_positiva
 def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
