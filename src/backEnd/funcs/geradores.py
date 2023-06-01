@@ -34,7 +34,7 @@ style = styles["Normal"]
 diretorio_documentos = os.path.join(os.path.expanduser('~'), 'Documents')
 
 #NOTE - gerar_certidao_positiva
-def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
+def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão positiva de débitos.
 
@@ -42,7 +42,6 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
 
     Parâmetros:
     - cnpj_cpf: str - O número do CNPJ ou CPF do solicitante.
-    - inscricao_municipal: str - O número da inscrição municipal do solicitante.
     - razao_social: str - O nome ou razão social do solicitante.
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
@@ -69,12 +68,12 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAHIA')
+    cnv.drawString(x=x, y=y-15, text='DELEGACIA REGIONAL DO GOB NA BAHIA')
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code1)
     width, height = img.size
     escala = 0.07
@@ -98,21 +97,17 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1', 10)
     cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')
+    cnv.drawString(x=x, y=y-15, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=razao_social)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
+    cnv.drawString(x=x, y=y-30, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=endereco)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
+    cnv.drawString(x=x, y=y-45, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-45, text=endereco)
-    cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
-    cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-45, text=municipio_uf)
 
     #NOTE - Texto
     x = 35
@@ -137,7 +132,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
+def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
     Gera uma certidão negativa de débitos.
 
@@ -145,7 +140,6 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
 
     Parâmetros:
     - cnpj_cpf: str - O número do CNPJ ou CPF do solicitante.
-    - inscricao_municipal: str - O número da inscrição municipal do solicitante.
     - razao_social: str - O nome ou razão social do solicitante.
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
@@ -173,12 +167,12 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAHIA')
+    cnv.drawString(x=x, y=y-15, text='DELEGACIA REGIONAL DO GOB NA BAHIA')
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code1)
     width, height = img.size
     escala = 0.07
@@ -202,21 +196,17 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1', 10)
     cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')
+    cnv.drawString(x=x, y=y-15, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=razao_social)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
+    cnv.drawString(x=x, y=y-30, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=endereco)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
+    cnv.drawString(x=x, y=y-45, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-45, text=endereco)
-    cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
-    cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-45, text=municipio_uf)
 
     #NOTE - Texto
     x = 35
@@ -251,13 +241,12 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.save()
 
 #NOTE - gerar_certidao_negativa
-def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_social: str, endereco: str, municipio_uf: str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
     """
-    Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do Grande Oriente do Brasil - Bahia.
+    Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do DELEGACIA REGIONAL DO GOB NA BAHIA.
 
     Parâmetros:
     - cnpj_cpf (str): CNPJ ou CPF do solicitante.
-    - inscricao_municipal (str): Inscrição municipal do solicitante.
     - razao_social (str): Nome ou razão social do solicitante.
     - endereco (str): Endereço do solicitante.
     - municipio_uf (str): Município e UF do solicitante.
@@ -290,7 +279,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 14670178000154')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code2)
     width, height = img.size
     escala = 0.07
@@ -317,25 +306,17 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.roundRect(x=x-3, y=y-19, width=155, height=15, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')    
+    cnv.drawString(x=x, y=y-15, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.setFillColor(amarelo)
-    tamanho_string = len(inscricao_municipal)
-    cnv.roundRect(x=x+142, y=y-19, width=tamanho_string*6, height=15, radius=3, stroke = 0, fill=1)
-    cnv.setFillColor(preto)    
-    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=razao_social)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
+    cnv.drawString(x=x, y=y-30, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=endereco)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
+    cnv.drawString(x=x, y=y-45, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-45, text=endereco)
-    cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
-    cnv.setFont('font1', 10)
-    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-45, text=municipio_uf)
 
     #NOTE - Texto
     x = 35

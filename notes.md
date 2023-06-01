@@ -1,6 +1,6 @@
-- Remover input data
+- Remover input data (OK)
 - Alterar dados do cabeçalho
-	- Onde tiver grande oriente do brasil alterar para nome novo
+	- Onde tiver grande oriente do brasil alterar para nome novo (OK)
 	- ALterar endereço 
 - Colocar tres pontos entre as letras do A R L S (A∴R∴L∴S∴)
 - Alterar email do rodape - financeiro.delegacia@gmail.com
