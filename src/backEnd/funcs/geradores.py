@@ -27,7 +27,7 @@ date = datetime.datetime.strptime(data_validade, "%Y-%m-%d")
 data_validade = date.strftime("%d/%m/%Y")
 
 #NOTE - QRCODE
-data = f"Leandro dos Santos Araújo\nEmissão: {data_atual}\nValidade: {data_validade}"
+data = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
 qr = qrcode.QRCode(
     error_correction=qrcode.constants.ERROR_CORRECT_L,
     box_size=10,
@@ -37,11 +37,11 @@ qr = qrcode.QRCode(
 qr.add_data(data)
 qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
-img.save(r"src\backEnd\img\qrcode.png")
+img.save(qr_code)
 
 #NOTE - Fontes
-pdfmetrics.registerFont(TTFont('font1', 'arial.ttf'))
-pdfmetrics.registerFont(TTFont('font1_bold', 'ARIBL0.ttf'))
+pdfmetrics.registerFont(TTFont('font1', 'DejaVuSans.ttf'))
+pdfmetrics.registerFont(TTFont('font1_bold', 'DejaVuSans-Bold.ttf'))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
@@ -126,10 +126,10 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     #NOTE - Texto
     x = 35
     y = 490
-    cnv.setFont('font1', 12)
-    cnv.drawString(x=x, y=y, charSpace=0.3, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
-    cnv.drawString(x=x, y=y-15, charSpace=0.45, text='GOB-BA, sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão')
-    cnv.drawString(x=x, y=y-30, charSpace=0.3, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    cnv.setFont('font1', 11)
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='GOB-BA, sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 375
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
@@ -226,11 +226,11 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     #NOTE - Texto
     x = 35
     y = 490
-    cnv.setFont('font1', 12)
-    cnv.drawString(x=x, y=y, charSpace=0.3, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
-    cnv.drawString(x=x, y=y-15, charSpace=0.45, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
-    cnv.drawString(x=x, y=y-30, charSpace=0.3, text='vierem a ser apuradas, é Certificado que não constam pendências em seu nome, relativas as')
-    cnv.drawString(x=x, y=y-45, charSpace=0.3, text='taxas administradas.')
+    cnv.setFont('font1', 11)
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='vierem a ser apuradas, é Certificado que não constam pendências em seu nome, relativas as')
+    cnv.drawString(x=x, y=y-45, charSpace=0.2, text='taxas administradas.')
     
     #NOTE - Data
     x = 35
@@ -337,11 +337,11 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     #NOTE - Texto
     x = 35
     y = 490
-    cnv.setFont('font1', 12)
-    cnv.drawString(x=x, y=y, charSpace=0.3, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
-    cnv.drawString(x=x, y=y-15, charSpace=0.45, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
-    cnv.drawString(x=x, y=y-30, charSpace=0.3, text='vierem a ser apuradas, é Certificado que não constam pendências em seu nome, relativas as')
-    cnv.drawString(x=x, y=y-45, charSpace=0.3, text='taxas administradas.')
+    cnv.setFont('font1', 11)
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='vierem a ser apuradas, é Certificado que não constam pendências em seu nome, relativas as')
+    cnv.drawString(x=x, y=y-45, charSpace=0.2, text='taxas administradas.')
     
     #NOTE - Data
     x = 35
