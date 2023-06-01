@@ -8,12 +8,22 @@ body {
     background-color:#c0c0d9;
 }
 
+#logo {
+    transform: scale(0.5);
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
 .leftFrame {
     width: 30%;
     height: 70%;
     background-color: #dddde7;
     border: none;
     box-shadow: -13px 13px 16px -11px #A3A3B3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .flashMessages {
