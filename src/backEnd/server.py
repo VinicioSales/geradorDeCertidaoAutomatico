@@ -2,12 +2,13 @@ import os
 import io
 import sys
 import webbrowser
+import threading
 from modules.funcs.funcs import *
 from flask import Flask, request, render_template, redirect, flash
 
-# buffer = io.StringIO()
-# sys.stdout = buffer
-# sys.stderr = buffer
+buffer = io.StringIO()
+sys.stdout = buffer
+sys.stderr = buffer
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'static'))
@@ -34,5 +35,13 @@ def gerar_certidao():
     return redirect('/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app_thread = threading.Thread(target=app.run)
+    app_thread.daemon = True
+    app_thread.start()
+    
+    # Abre o navegador com a página HTML
+    webbrowser.open('http://localhost:5000')
+    
+    # Mantém o programa em execução enquanto o servidor Flask estiver ativo
+    app_thread.join()
     #webbrowser.open('http://localhost:5000')
