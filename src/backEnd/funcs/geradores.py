@@ -361,7 +361,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     y = 70
     cnv.setFont('font1_bold', 8)
     cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-150, y=y-3, width=300, height=12, radius=3, stroke = 0, fill=1)
+    cnv.roundRect(x=x-160, y=y-3, width=320, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
     cnv.setFillColor(amarelo)
