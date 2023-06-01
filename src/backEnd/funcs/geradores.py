@@ -86,8 +86,9 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
+    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
@@ -186,8 +187,9 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
+    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
@@ -294,8 +296,9 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
+    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
