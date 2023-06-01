@@ -168,18 +168,25 @@ def script(dict_dados_clientes, razao_social_pesquisado, data_validade, dict_cod
             print(f'gerar_certidao_negativa')
 
             gerar_certidao_negativa(cnpj_cpf, inscricao_municipal, razao_social, endereco=endereco_completo, municipio_uf=cidade, data_validade=data_validade)
+            message = f'Cliente ({razao_social}) com contas a receber pendentes'
         elif atrasada == False:
 
             #FIXME - REMOVER
             print(f'gerar_certidao_positiva_negativa')
 
             gerar_certidao_positiva_negativa(cnpj_cpf, inscricao_municipal, razao_social, data_validade=data_validade, endereco=endereco_completo, municipio_uf=cidade)
+            message = f'Cliente ({razao_social}) Com contas a receber a vencer'
         elif atrasada == None:
 
             #FIXME - REMOVER
             print(f'gerar_certidao_positiva')
 
             gerar_certidao_positiva(cnpj_cpf=cnpj_cpf, inscricao_municipal=inscricao_municipal, razao_social=razao_social, endereco=endereco, municipio_uf=cidade)
+            message = f'Cliente ({razao_social}) Sem contas a receber'
+    else:
+        message = 'Cliente  não encontrado'
+
+    return message
 #!SECTION
 
     

@@ -16,6 +16,17 @@ body {
     box-shadow: -13px 13px 16px -11px #A3A3B3;
 }
 
+.flashMessages {
+    display: flex;
+    align-content: center;
+    font-family: 'Bungee', cursive;
+    font-size: 20px;
+    padding: 10%;
+    padding-top: 20%;
+    text-align: center;
+    
+}
+
 .subRightFrame {
     display: flex;
     flex-direction: column;
