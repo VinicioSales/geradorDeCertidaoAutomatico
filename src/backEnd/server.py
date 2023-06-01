@@ -1,7 +1,13 @@
 import os
+import io
+import sys
+import webbrowser
 from modules.funcs.funcs import *
 from flask import Flask, request, render_template, redirect, flash
 
+# buffer = io.StringIO()
+# sys.stdout = buffer
+# sys.stderr = buffer
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'static'))
@@ -30,3 +36,4 @@ def gerar_certidao():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    webbrowser.open('http://localhost:5000')

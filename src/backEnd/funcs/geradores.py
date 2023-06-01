@@ -14,8 +14,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 data_atual = date.today()
 data_atual = data_atual.strftime('%d/%m/%Y')
 
-pdfmetrics.registerFont(TTFont('font1', font_principal))
-pdfmetrics.registerFont(TTFont('font1_bold', font_principal_bold))
+pdfmetrics.registerFont(TTFont('font1', 'arial.ttf'))
+pdfmetrics.registerFont(TTFont('font1_bold', 'ARIBL0.ttf'))
 styles = getSampleStyleSheet()
 style = styles["Normal"]
 
@@ -80,26 +80,27 @@ def gerar_certidao_positiva(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     #NOTE - Dados
     x = 35
     y = 605
+    padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y, text=cnpj_cpf)
+    cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-45, text=endereco)
+    cnv.drawString(x=x+padding, y=y-45, text=endereco)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
 
     #NOTE - Texto
     x = 35
@@ -184,26 +185,27 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     #NOTE - Dados
     x = 35
     y = 605
+    padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y, text=cnpj_cpf)
+    cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-45, text=endereco)
+    cnv.drawString(x=x+padding, y=y-45, text=endereco)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
 
     #NOTE - Texto
     x = 35
@@ -220,11 +222,11 @@ def gerar_certidao_negativa(cnpj_cpf: str, inscricao_municipal: str, razao_socia
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='DATA EMISSÃO:')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y, text=data_atual)
+    cnv.drawString(x=x+100, y=y, text=data_atual)
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-15, text='VÁLIDO ATÉ: ')
+    cnv.drawString(x=x, y=y-18, text='VÁLIDO ATÉ: ')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y-15, text=data_validade)
+    cnv.drawString(x=x+100, y=y-15, text=data_validade)
     cnv.setFont('font1_bold', 11)
 
     #NOTE - Rodapé
@@ -296,12 +298,13 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     #NOTE - Dados
     x = 35
     y = 605
+    padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y, text=cnpj_cpf)
+    cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
     cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-3, y=y-19, width=135, height=15, radius=3, stroke = 0, fill=1)
+    cnv.roundRect(x=x-3, y=y-19, width=155, height=15, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='INSCRIÇÃO MUNICIPAL:')    
@@ -310,19 +313,19 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     tamanho_string = len(inscricao_municipal)
     cnv.roundRect(x=x+142, y=y-19, width=tamanho_string*6, height=15, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)    
-    cnv.drawString(x=x+145, y=y-15, text=inscricao_municipal)
+    cnv.drawString(x=x+padding, y=y-15, text=inscricao_municipal)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='NOME / RAZÃO SOCIAL:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-30, text=razao_social)
+    cnv.drawString(x=x+padding, y=y-30, text=razao_social)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-45, text='ENDEREÇO:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-45, text=endereco)
+    cnv.drawString(x=x+padding, y=y-45, text=endereco)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-60, text='MUNICIPIO / UF:')
     cnv.setFont('font1', 10)
-    cnv.drawString(x=x+145, y=y-60, text=municipio_uf)
+    cnv.drawString(x=x+padding, y=y-60, text=municipio_uf)
 
     #NOTE - Texto
     x = 35
@@ -339,11 +342,11 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='DATA EMISSÃO:')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y, text=data_atual)
+    cnv.drawString(x=x+100, y=y, text=data_atual)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='VÁLIDO ATÉ: ')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+93, y=y-15, text=data_validade)
+    cnv.drawString(x=x+100, y=y-15, text=data_validade)
     cnv.setFont('font1_bold', 11)
 
     #NOTE - Rodapé
@@ -351,15 +354,15 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, inscricao_municipal: str, ra
     y = 70
     cnv.setFont('font1_bold', 8)
     cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-125, y=y-3, width=250, height=12, radius=3, stroke = 0, fill=1)
+    cnv.roundRect(x=x-150, y=y-3, width=300, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y, text='E-mail:financeiro.goeb@gmail.com Site: Telefone: (71) 32410420')
     cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-100, y=y-16, width=200, height=12, radius=3, stroke = 0, fill=1)
+    cnv.roundRect(x=x-120, y=y-16.5, width=230, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
     cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-145, y=y-26, width=288, height=12, radius=3, stroke = 0, fill=1)
+    cnv.roundRect(x=x-165, y=y-26, width=330, height=12, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
 
