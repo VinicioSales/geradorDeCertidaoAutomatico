@@ -19,11 +19,13 @@ body {
 .flashMessages {
     display: flex;
     align-content: center;
-    font-family: 'Bungee', cursive;
+    justify-content: center;
+    flex-direction: column;
     font-size: 20px;
-    padding: 10%;
-    padding-top: 20%;
     text-align: center;
+    height: 100%;
+    margin: 5%;
+    font-family: 'Bungee', cursive;
     
 }
 
