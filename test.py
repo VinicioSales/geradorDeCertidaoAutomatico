@@ -1,15 +1,16 @@
-from datetime import date, datetime
-import datetime
+import qrcode
 
-dias_uteis = 0
-data_atual = datetime.date.today()
-dias_a_somar = 10
-while dias_uteis < dias_a_somar:
-    data_atual += datetime.timedelta(days=1)
-    if data_atual.weekday() not in (5, 6):
-        dias_uteis += 1
-data_vencimento = str(data_atual)
-date = datetime.datetime.strptime(data_vencimento, "%Y-%m-%d")
-data_vencimento = date.strftime("%d/%m/%Y")
+data = "Leandro dos Santos Araújo\n01/06/2023\n05/06/2023"
 
-print(data_vencimento)
+qr = qrcode.QRCode(
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=1,
+)
+
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("qrcode.png")
+import os
+os.startfile('qrcode.png')

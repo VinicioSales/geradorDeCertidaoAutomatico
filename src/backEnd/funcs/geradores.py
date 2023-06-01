@@ -1,4 +1,5 @@
 import os
+import qrcode
 import datetime
 from PIL import Image
 from static.img import *
@@ -24,6 +25,19 @@ while dias_uteis < dias_a_somar:
 data_validade = str(data_atual_2)
 date = datetime.datetime.strptime(data_validade, "%Y-%m-%d")
 data_validade = date.strftime("%d/%m/%Y")
+
+#NOTE - QRCODE
+data = f"Leandro dos Santos Araújo\nEmissão: {data_atual}\nValidade: {data_validade}"
+qr = qrcode.QRCode(
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=1,
+)
+
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+img.save(r"src\backEnd\img\qrcode.png")
 
 #NOTE - Fontes
 pdfmetrics.registerFont(TTFont('font1', 'arial.ttf'))
@@ -74,12 +88,12 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
-    img = Image.open(qr_code1)
+    img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.07
+    escala = 0.25
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code1, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -174,12 +188,12 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
-    img = Image.open(qr_code1)
+    img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.07
+    escala = 0.25
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code1, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -282,12 +296,12 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='RUA JOGO DO CARNEIRO, 157 - SAÚDE - 40.045-040')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
-    img = Image.open(qr_code2)
+    img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.07
+    escala = 0.25
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code2, x=495, y=730, width=width, height=height)
+    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
 
     #NOTE - Título
     x = 300
