@@ -56,7 +56,6 @@ def get_dados_clientes():
             dados_cliente = {}
             dados_cliente['razao_social'] = cliente['razao_social']
             dados_cliente['cnpj_cpf'] =  cliente['cnpj_cpf']
-            dados_cliente['inscricao_municipal'] =  cliente['inscricao_municipal']
             dados_cliente['endereco'] =  cliente['endereco']
             dados_cliente['endereco_numero'] =  cliente['endereco_numero']
             dados_cliente['bairro'] =  cliente['bairro']
@@ -78,6 +77,11 @@ def get_contas_receber_clientes():
         é um dicionário com informações sobre o status da conta.
 
     """
+    codigo_categoria_divida_ativa = '1.01.79'
+
+    #FIXME - REMOVER
+    codigo_categoria_divida_ativa = '1.01.02'
+
     dict_contas_receber_atrasadas_clientes = {}
     dic_conta_atrasada = {}
     pagina = 1
@@ -90,6 +94,14 @@ def get_contas_receber_clientes():
             dic_conta_atrasada = {}
             codigo_cliente_fornecedor = conta_receber['codigo_cliente_fornecedor']
             status_titulo = conta_receber['status_titulo']
+            categorias = conta_receber['categorias']
+            for categoria in categorias:
+                codigo_categoria = categoria['codigo_categoria']
+                if codigo_categoria == codigo_categoria_divida_ativa:
+                    dic_conta_atrasada['divida_ativa'] = True
+                    break
+                else:
+                    dic_conta_atrasada['divida_ativa'] = False
             if status_titulo == "ATRASADO":
                 dic_conta_atrasada['atrasada'] = True
                 dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
@@ -140,11 +152,13 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
         #NOTE - Get Atrasada
         for cliente in dict_status_contas_receber_clientes.items():
             codigo_cliente_omie_conta_receber = cliente[0]
-            atrasada = cliente[1]
-            atrasada = atrasada['atrasada']
+            status = cliente[1]
+            divida_ativa = status['divida_ativa']
+            atrasada = status['atrasada']
             if codigo_cliente_omie_conta_receber == codigo_cliente_omie_pesquisado:
                 break
-            else: atrasada = None
+            else: 
+                atrasada = None
         
 
         for cliente  in dict_dados_clientes.items():
@@ -153,7 +167,6 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 dados_cliente = cliente[1]
                 razao_social = dados_cliente['razao_social']
                 cnpj_cpf = dados_cliente['cnpj_cpf']
-                inscricao_municipal = dados_cliente['inscricao_municipal']
                 endereco = dados_cliente['endereco']
                 endereco_numero = dados_cliente['endereco_numero']
                 bairro = dados_cliente['bairro']
@@ -162,27 +175,34 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 break
         cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
 
+        print(f'atrasada: {atrasada}')
+        print(f'divida_ativa: {divida_ativa}')
+
         if atrasada == True:
-
-            #FIXME - REMOVER
-            print(f'gerar_certidao_negativa')
-
-            gerar_certidao_negativa(cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
-            message = f'Cliente ({razao_social}) com contas a receber pendentes'
-        elif atrasada == False:
-
-            #FIXME - REMOVER
-            print(f'gerar_certidao_positiva_negativa')
-
-            gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
-            message = f'Cliente ({razao_social}) Com contas a receber a vencer'
-        elif atrasada == None:
 
             #FIXME - REMOVER
             print(f'gerar_certidao_positiva')
 
             gerar_certidao_positiva(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco, municipio_uf=cidade)
-            message = f'Cliente ({razao_social}) Sem contas a receber'
+            message = f'Gerado certidão positiva para o cliente ({razao_social})'
+
+            
+        elif atrasada == False and divida_ativa == False:
+
+            #FIXME - REMOVER
+            print(f'gerar_certidao_negativa')
+
+            gerar_certidao_negativa(cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
+            message = f'Gerado certidão negativa para o cliente ({razao_social})'
+
+            
+        elif atrasada == False and divida_ativa == True :
+            #FIXME - REMOVER
+            print(f'gerar_certidao_positiva_negativa')
+
+            gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
+            message = f'Gerado certidão positiva com efeito negativo para o cliente ({razao_social})'
+            
     else:
         message = 'Cliente  não encontrado'
 
