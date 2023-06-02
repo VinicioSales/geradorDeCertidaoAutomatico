@@ -1,6 +1,6 @@
 import os
-import webbrowser
 import threading
+import webbrowser
 from modules.funcs.funcs import *
 from flask import Flask, request, render_template, redirect, flash
 
@@ -22,13 +22,14 @@ def index():
 
 @app.route('/gerar_certidao', methods=['POST'])
 def gerar_certidao():
-    razao_social_pesquisado = request.form.get('razaoSocial')
+    razao_social_pesquisado = request.json
     response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
     print(f'response: {response}')
 
     flash(response)
 
     return redirect('/')
+
 
 if __name__ == '__main__':
     app_thread = threading.Thread(target=app.run, kwargs={'port': 5000})

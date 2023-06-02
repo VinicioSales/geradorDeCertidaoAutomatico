@@ -14,3 +14,4 @@ Alterar QR COde - (OK)
     Validade
     Emitida por 
     Hora da emissão
+Pesquisar cliente pelo codigo
