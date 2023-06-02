@@ -65,7 +65,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     """
     gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
-    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -132,9 +132,9 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 440
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças da DELEGACIA REGIONAL DO GOB NA BAHIA /')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='GOB-BA, sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão')
-    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças da DELEGACIA REGIONAL DO GOB')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='NA BAHIA sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='Certidão Negativa ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 375
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
@@ -165,7 +165,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - data_emissao: str - A data de emissão da certidão.
     """
     gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
-    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
@@ -273,7 +273,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     - data_emissao (str): Data de emissão da certidão.
     """
     gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
-    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
+    cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
     img = Image.open(logo)
