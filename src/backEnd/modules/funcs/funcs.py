@@ -101,9 +101,6 @@ def get_contas_receber_clientes():
     """
     codigo_categoria_divida_ativa = '1.01.79'
 
-    #FIXME - REMOVER
-    codigo_categoria_divida_ativa = '1.01.02'
-
     dict_contas_receber_atrasadas_clientes = {}
     dic_conta_atrasada = {}
     pagina = 1
