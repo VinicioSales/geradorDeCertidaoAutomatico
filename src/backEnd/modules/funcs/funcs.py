@@ -7,6 +7,28 @@ from modules.api.financas import *
 
 
 
+#NOTE - get_nome_clientes_func
+def get_nome_clientes_func():
+    """
+    Retorna uma lista com os nomes dos clientes cadastrados.
+
+    Returns:
+        list: Uma lista contendo os nomes dos clientes cadastrados.
+    """
+
+    lista_nome_clientes = []
+    pagina = 1
+    total_de_paginas = 1
+    while pagina <= total_de_paginas:
+        response = listar_clientes(pagina=pagina)
+        response = response.json()
+        clientes_cadastro = response['clientes_cadastro']
+        total_de_paginas = int(response['total_de_paginas'])
+        for cliente in clientes_cadastro:
+            lista_nome_clientes.append(cliente['razao_social'])
+        pagina = pagina + 1
+
+    return lista_nome_clientes
 
 #NOTE - get_codigo_clientes
 def get_codigo_clientes():

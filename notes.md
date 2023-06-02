@@ -16,8 +16,9 @@ Alterar QR COde - (OK)
     Hora da emissão (OK)
 Pesquisar cliente pelo codigo
 Alterar nome no texto (OK)
-Alterar logica da geracao das certidoes
+Alterar logica da geracao das certidoes (OK)
     - Cliente com CONTAS ATRASADAS - CERTIDÃO POSITIVA (OK)
     - Cliente com contas a vencer CERTIDÃO NEGATIVA (OK)
     - CERTIDAO POSITIVA COM EFEITO NEGATIVO * só quando o lançamento estiver na *CATEGORIA - PARCELAMENTO DÍVIDA ATIVA e com contas a vencer. (OK)
 Alterar mensagem de resposta (OK)
+Criar lista dos nomes

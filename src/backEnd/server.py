@@ -33,7 +33,7 @@ def gerar_certidao():
 
 @app.route('/get_nome_clientes', methods=['GET'])
 def get_nome_clientes():
-    lista_nome_clientes = ['vini', 'amanda']
+    lista_nome_clientes = get_nome_clientes_func()
 
     return jsonify(lista_nome_clientes)
 
