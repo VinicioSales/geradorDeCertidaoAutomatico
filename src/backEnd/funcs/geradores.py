@@ -20,7 +20,18 @@ data_validade = data_atual_2 + datetime.timedelta(days=30)
 data_validade = data_validade.strftime("%d/%m/%Y")
 
 #NOTE - QRCODE
+data_hora_atual = datetime.datetime.now()
+data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
 dados = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
+dados = f"""
+CNPJ/CPF = 00930940000180
+Nome = LOJA MACONICA BENJAMIM PEREIRA MASCARENHAS Nº 2847
+
+
+Data Emissão = {data_atual}
+Válida até = {data_validade}
+
+Emitida por = LEANDRO DOS SANTOS ARAUJO EM {data_hora_formatada}"""
 qr = qrcode.QRCode(
     error_correction=qrcode.constants.ERROR_CORRECT_L,
     box_size=10,
@@ -78,14 +89,14 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.25
+    escala = 0.2
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
+    cnv.drawImage(qr_code, x=460, y=700, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -177,14 +188,14 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.25
+    escala = 0.2
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
+    cnv.drawImage(qr_code, x=460, y=700, width=width, height=height)
 
     #NOTE - Título
     x = 300
@@ -284,14 +295,14 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
     cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
-    escala = 0.25
+    escala = 0.2
     width = width * escala
     height = height * escala
-    cnv.drawImage(qr_code, x=480, y=720, width=width, height=height)
+    cnv.drawImage(qr_code, x=460, y=700, width=width, height=height)
 
     #NOTE - Título
     x = 300
