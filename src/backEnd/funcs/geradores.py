@@ -15,25 +15,18 @@ from reportlab.lib.styles import getSampleStyleSheet
 #NOTE - Data
 data_atual = datetime.date.today()
 data_atual = data_atual.strftime('%d/%m/%Y')
-dias_uteis = 0
 data_atual_2 = datetime.date.today()
-dias_a_somar = 30
-while dias_uteis < dias_a_somar:
-    data_atual_2 += datetime.timedelta(days=1)
-    if data_atual_2.weekday() not in (5, 6):
-        dias_uteis += 1
-data_validade = str(data_atual_2)
-date = datetime.datetime.strptime(data_validade, "%Y-%m-%d")
-data_validade = date.strftime("%d/%m/%Y")
+data_validade = data_atual_2 + datetime.timedelta(days=30)
+data_validade = data_validade.strftime("%d/%m/%Y")
 
 #NOTE - QRCODE
-data = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
+dados = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
 qr = qrcode.QRCode(
     error_correction=qrcode.constants.ERROR_CORRECT_L,
     box_size=10,
     border=1,
 )
-qr.add_data(data)
+qr.add_data(dados)
 qr.make(fit=True)
 img = qr.make_image(fill_color="black", back_color="white")
 img.save(qr_code)
@@ -86,8 +79,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
-    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
-    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
@@ -139,9 +131,8 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
-    cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
-    cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
 
     cnv.save()
 #!SECTION
@@ -187,8 +178,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
-    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
-    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
@@ -250,9 +240,8 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
-    cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
-    cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
 
     cnv.save()
 #!SECTION
@@ -291,13 +280,12 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAHIA')
+    cnv.drawString(x=x, y=y-15, text='DELEGACIA REGIONAL DO GOB NA BAHIA')
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BA')
     cnv.setFont('font1_bold', 10)
     cnv.drawString(x=x, y=y-45, text='Rua da Portas do Carmo, nª 37, Pelourinho')
-    cnv.drawString(x=x, y=y-60, text='Cep: 40.026-290, Salvador Bahia')
-    cnv.drawString(x=x, y=y-75, text='CNPJ: 32.701.021/0001-20')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 32.701.021/0001-20')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.25
@@ -362,18 +350,11 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-160, y=y-3, width=320, height=12, radius=3, stroke = 0, fill=1)
-    cnv.setFillColor(preto)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com Site: Telefone: 71 9.992058-73')
-    cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-120, y=y-16.5, width=230, height=12, radius=3, stroke = 0, fill=1)
-    cnv.setFillColor(preto)
-    cnv.drawCentredString(x=x, y=y-13, text='Autenticidade do documento sujeita a verificação.')
-    cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-165, y=y-26, width=330, height=12, radius=3, stroke = 0, fill=1)
-    cnv.setFillColor(preto)
-    cnv.drawCentredString(x=x, y=y-23, text='Acesse: https://gob-ba.link3.com.br/l3-grp/Servicos.html para verificação.')
+    #cnv.setFillColor(amarelo)
+    #cnv.roundRect(x=x-160, y=y-3, width=320, height=12, radius=3, stroke = 0, fill=1)
+    #cnv.setFillColor(preto)
+    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
 
     cnv.save()
 #!SECTION
