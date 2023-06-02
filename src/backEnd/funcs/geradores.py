@@ -20,27 +20,28 @@ data_validade = data_atual_2 + datetime.timedelta(days=30)
 data_validade = data_validade.strftime("%d/%m/%Y")
 
 #NOTE - QRCODE
-data_hora_atual = datetime.datetime.now()
-data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
-dados = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
-dados = f"""
-CNPJ/CPF = 00930940000180
-Nome = LOJA MACONICA BENJAMIM PEREIRA MASCARENHAS Nº 2847
+def gerar_qr_code(cnpj_cpf, razao_social):
+    data_hora_atual = datetime.datetime.now()
+    data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
+    dados = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
+    dados = f"""
+    CNPJ/CPF = {cnpj_cpf}
+    Nome = {razao_social}
 
 
-Data Emissão = {data_atual}
-Válida até = {data_validade}
+    Data Emissão = {data_atual}
+    Válida até = {data_validade}
 
-Emitida por = LEANDRO DOS SANTOS ARAUJO EM {data_hora_formatada}"""
-qr = qrcode.QRCode(
-    error_correction=qrcode.constants.ERROR_CORRECT_L,
-    box_size=10,
-    border=1,
-)
-qr.add_data(dados)
-qr.make(fit=True)
-img = qr.make_image(fill_color="black", back_color="white")
-img.save(qr_code)
+    Emitida por = LEANDRO DOS SANTOS ARAUJO EM {data_hora_formatada}"""
+    qr = qrcode.QRCode(
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=1,
+    )
+    qr.add_data(dados)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+    img.save(qr_code)
 
 #NOTE - Fontes
 pdfmetrics.registerFont(TTFont('font1', font_principal))
@@ -63,6 +64,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     """
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -162,6 +164,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     - data_emissao: str - A data de emissão da certidão.
     """
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -269,6 +272,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     - municipio_uf (str): Município e UF do solicitante.
     - data_emissao (str): Data de emissão da certidão.
     """
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO.pdf', pagesize=A4)
     
     #NOTE - logo

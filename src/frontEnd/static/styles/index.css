@@ -130,7 +130,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     max-height: 150px;  /* Define a altura máxima para mostrar 5 itens com 30px cada */
     overflow-y: auto;  /* Adiciona rolagem vertical quando necessário */
-    background-color: #f4f5f5;  /* Cor de fundo do dropdown */
+    background-color: #fff;  /* Cor de fundo do dropdown */
     color: #000736; /* Adiciona padding vertical */
     width: 100%;  /* Largura do dropdown */
     margin-top: 10px;  /* Adiciona margem acima do dropdown */

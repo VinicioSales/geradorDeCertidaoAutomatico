@@ -181,6 +181,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 break
             else: 
                 atrasada = None
+                divida_ativa = None
         
 
         for cliente  in dict_dados_clientes.items():
@@ -197,6 +198,8 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 break
         cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
 
+        print(f'atrasada: {atrasada}')
+        print(f'divida_ativa: {divida_ativa}')
 
         if atrasada == True:
 
@@ -204,7 +207,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             print(f'gerar_certidao_positiva')
 
             gerar_certidao_positiva(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco, municipio_uf=cidade)
-            message = f'Gerado certidão positiva para o cliente ({razao_social})'
+            message = f'{razao_social}:\nGerado certidão positiva'
 
             
         elif atrasada == False and divida_ativa == False:
@@ -213,7 +216,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             print(f'gerar_certidao_negativa')
 
             gerar_certidao_negativa(cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
-            message = f'Gerado certidão negativa para o cliente ({razao_social})'
+            message = f'{razao_social}:\nGerado certidão negativa'
 
             
         elif atrasada == False and divida_ativa == True :
@@ -221,7 +224,10 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             print(f'gerar_certidao_positiva_negativa')
 
             gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
-            message = f'Gerado certidão positiva com efeito negativo para o cliente ({razao_social})'
+            message = f'{razao_social}:\nGerado certidão positiva com efeito negativo'
+
+        else:
+            message = f'{razao_social}:\nNão encontrado'
             
     else:
         message = 'Cliente  não encontrado'
