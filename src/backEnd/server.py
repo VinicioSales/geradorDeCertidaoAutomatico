@@ -2,7 +2,7 @@ import os
 import threading
 import webbrowser
 from modules.funcs.funcs import *
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
@@ -31,6 +31,11 @@ def gerar_certidao():
 
     return response
 
+@app.route('/get_nome_clientes', methods=['GET'])
+def get_nome_clientes():
+    lista_nome_clientes = ['vini', 'amanda']
+
+    return jsonify(lista_nome_clientes)
 
 if __name__ == '__main__':
     app_thread = threading.Thread(target=app.run, kwargs={'port': 5000})
