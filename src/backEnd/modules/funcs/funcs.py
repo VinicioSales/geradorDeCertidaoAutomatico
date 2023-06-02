@@ -175,8 +175,6 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 break
         cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
 
-        print(f'atrasada: {atrasada}')
-        print(f'divida_ativa: {divida_ativa}')
 
         if atrasada == True:
 
