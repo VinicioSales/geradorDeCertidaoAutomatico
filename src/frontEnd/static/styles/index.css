@@ -41,6 +41,7 @@ body {
 }
 
 .formulario {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -119,10 +120,28 @@ body {
 	top:1px;
 }
 
-.dropdown-content {
-    font-family: Arial, Helvetica, sans-serif;
+.dropdown {
+    position: absolute;
+    width: 100%;
+    z-index: 1;
 }
 
-.dropdown-content:hover {
-    background-color: #dddde7;
+.dropdown-content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-height: 150px;  /* Define a altura máxima para mostrar 5 itens com 30px cada */
+    overflow-y: auto;  /* Adiciona rolagem vertical quando necessário */
+    background-color: #f4f5f5;  /* Cor de fundo do dropdown */
+    color: #000736; /* Adiciona padding vertical */
+    width: 100%;  /* Largura do dropdown */
+    margin-top: 10px;  /* Adiciona margem acima do dropdown */
+}
+
+.dropdown-content div {
+    padding: 5px 10px;  /* Adiciona padding aos itens do dropdown */
+    cursor: pointer;  /* Muda o cursor para pointer ao passar o mouse sobre um item */
+}
+
+.dropdown-content div:hover {
+    background-color: #76C1BA;  /* Muda a cor de fundo do item ao passar o mouse sobre ele */
+    color: #ffffff;  /* Muda a cor do texto do item ao passar o mouse sobre ele */
 }
