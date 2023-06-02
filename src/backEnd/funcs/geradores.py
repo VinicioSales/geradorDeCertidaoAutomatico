@@ -89,14 +89,14 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
 
     #NOTE - Título
     x = 300
-    y = 700
+    y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA DE DÉBITOS')
     cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BA')
 
     #NOTE - Dados
     x = 35
-    y = 605
+    y = 555
     padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
@@ -117,7 +117,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
 
     #NOTE - Texto
     x = 35
-    y = 490
+    y = 440
     cnv.setFont('font1', 11)
     cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
     cnv.drawString(x=x, y=y-15, charSpace=0.2, text='GOB-BA, sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão')
@@ -188,14 +188,14 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
 
     #NOTE - Título
     x = 300
-    y = 700
+    y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO NEGATIVA DE DÉBITOS')
     cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BA')
 
     #NOTE - Dados
     x = 35
-    y = 605
+    y = 555
     padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
@@ -216,7 +216,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
 
     #NOTE - Texto
     x = 35
-    y = 490
+    y = 440
     cnv.setFont('font1', 11)
     cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
     cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
@@ -295,14 +295,14 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
 
     #NOTE - Título
     x = 300
-    y = 700
+    y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA COM EFEITO NEGATIVO DE DÉBITOS')
     cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BA')
 
     #NOTE - Dados
     x = 35
-    y = 605
+    y = 555
     padding = 160
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
@@ -326,7 +326,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
 
     #NOTE - Texto
     x = 35
-    y = 490
+    y = 440
     cnv.setFont('font1', 11)
     cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças do Grande Oriente do Brasil – Bahia / GOB-BA')
     cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
