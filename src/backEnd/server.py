@@ -2,7 +2,7 @@ import os
 import threading
 import webbrowser
 from modules.funcs.funcs import *
-from flask import Flask, request, render_template, redirect, flash
+from flask import Flask, request, render_template
 
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
@@ -25,10 +25,11 @@ def gerar_certidao():
     razao_social_pesquisado = request.json
     response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
     print(f'response: {response}')
+    response = {
+        'message': response
+    }
 
-    flash(response)
-
-    return redirect('/')
+    return response
 
 
 if __name__ == '__main__':
