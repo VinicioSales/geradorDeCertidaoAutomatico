@@ -1,6 +1,6 @@
 const razaoSocial = document.querySelector('.input')
 const button = document.querySelector('#button')
-const leftFeame = document.querySelector('.leftFrame')
+const leftFeame = document.querySelector('.flashMessages')
 
 
 button.addEventListener('click', () => {

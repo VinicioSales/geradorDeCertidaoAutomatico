@@ -15,15 +15,8 @@
 </head>
 <body>
     <div class="leftFrame">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flashMessages">
-                    {% for message in messages %}
-                        <div class="flashMessages">{{ message }}</div>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
+        <div class="flashMessages">
+        </div>
     </div>
 
     <div class="rightFrame">
