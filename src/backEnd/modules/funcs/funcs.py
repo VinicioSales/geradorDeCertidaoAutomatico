@@ -4,6 +4,7 @@ from funcs.geradores import *
 from unidecode import unidecode
 from modules.api.clientes import *
 from modules.api.financas import *
+from modules.api.google import *
 
 
 

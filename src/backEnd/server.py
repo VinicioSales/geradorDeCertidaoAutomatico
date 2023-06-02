@@ -2,8 +2,11 @@ import os
 import threading
 import webbrowser
 from modules.funcs.funcs import *
+from modules.api.google import *
 from flask import Flask, request, render_template, jsonify
 
+status = get_liberacao()
+print(status)
 
 template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'templates'))
 static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontEnd', 'static'))
@@ -22,14 +25,21 @@ def index():
 
 @app.route('/gerar_certidao', methods=['POST'])
 def gerar_certidao():
-    razao_social_pesquisado = request.json
-    response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
-    print(f'response: {response}')
-    response = {
-        'message': response
-    }
+    if status == 'liberado':
+        razao_social_pesquisado = request.json
+        response = script(dict_dados_clientes = dict_dados_clientes, razao_social_pesquisado=razao_social_pesquisado, dict_codigo_clientes=dict_codigo_clientes, dict_status_contas_receber_clientes=dict_status_contas_receber_clientes)
+        print(f'response: {response}')
+        response = {
+            'message': response
+        }
 
-    return response
+        return response
+    else:
+        response = {
+            'message': 'Acesso Negado!'
+        }
+
+        return response
 
 @app.route('/get_nome_clientes', methods=['GET'])
 def get_nome_clientes():

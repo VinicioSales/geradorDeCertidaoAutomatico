@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "consulta-cnpj-379413",
+  "private_key_id": "04b18c343612983d236352d446a7d5d4160c4c95",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDHgXpUdBIZLnDP\nZ3FQZnUHjuoNsw99Yff1sP59kWySQvVn/072gMHHC4UzthkChgTikZAw11K+NgqW\nACASemfTT3YCGBQpnj7YVIRSvgqFoTp0cNrE/w65FCnA2gBjZjqSXIa1b/7b+BA0\nJZjpHh2/Z/XdBtGezvo6SbHhsd6U0j/hFZoStxK5CtGsLbL+qFzLlFuOOReThm4o\npMu8DloTxFX0CLx5kJcn55VsO+zgXBdnE6qWljWM58kyNd3xpmYfTyoVLQAnqFMn\nOMlzr/emFmCmPqNmcuW8lcpMvwRTwOxa1xZ67yhNvjp5KzvbeKbb6qRKQe41n5Ya\n7uiDQnb1AgMBAAECggEAAxbHaKqLFstIpSXF1Uu7stzSA4ybe1mp7sld0FSL7z41\nryjGa2oEOei9CNdL1CgYBYJcG2qbWdiErj3iQT4HJIzWu7dTud9RX4tOLf2hXVsw\nwKuCf1FjBrs4OuuLlVqSGHkVo0RqQU2lozhrZ+t+fkIc2tQKHq7gmpAI58Nz05qt\nLIy8Hte2IZ1woTkCxHR/3uYKqrcVxBwGOBOfbMQZJwxaNnuQ9tpaxYmKZHqibC6I\ni7NU/MIS5XUO6CAjJU4CBt2+/lZQkyECoNJra3gp+R6Nt8yh47feTS4IqA+yuG5y\nWFD547Pg6h8sim/jR8jQujhrcBrNcqxc1TT+0CzdIQKBgQDifjXCYhGnLBJNjN9A\nfNA73gob1BJITr4djvPBxCflNQwrNBFl5aBJMxZMts7DcoFclg2Fhlj9f0bYEVMY\n5xLN1ngqNW/a91Gnga/YbAb1s4OTj0suOshOLv0Wh6QLOoLF9AWl+RmwxT6UjX2V\nDEzRixBwV7ZtihmNJW22fwNtDwKBgQDhfzbIatC6p+wVDM8D0U7DJgOEPSQGKuZ8\nc9kgeaKaGcxvdrzd1sEmqtQ1RIGfMTnZk6iQk0Lgao/v0hc6LrIJsZsm96ssp9M9\neFfqs0eQW3jv+kNwuPzVFrceaaCwfPmN44SXc0zVmwtouSc+gYYK9owUkm8OgabG\ncZzCmBtjuwKBgEY0TMGV2FbzCDFVixXYGkuURZneoFQdZDyRROk4vg0D5mO13fax\nuH84AJ+CwpA+e+6Q7FwJCqh4vSLYK+O6LE/1PIYIzkUXCA5d2n3A7l9WZ2BjuC/6\nNIBXfEdxf92jI0nsm5uYnOf4G6+8M8LxbxY8frnz1i4Z8lWX1mwM7qjtAoGAZ6nD\n1X7FVgm8TjEFOgwO2UewdiplVTCDpNLdDkDcr1sM0HEVgiYnxU7jH1nO/Q/0OEHZ\nTB1msSRL50P9yZGN50buvIs+9dhxE+EvCYZBb+udPTUfq8Je+Nbod+K3LGtHjiL5\n4WXv/IK6S/pSQDnrFT8iRpLK2zBfKvsvxYWHkeECgYBJAUvliyniVc5dHhcePOoa\nB94q+TtweiKwHo58zNVZTqPsGurC58Q1qmzonTkgc08hvTcPWG4S2TRb7BscM5Tk\nj6PrJ6+69RXb0e8PNuz7uTzPyyphEEM8CG1DANqVA3pWK49H7aUbd4t6hkN2xQGo\ngwNcNZVEPgRzZgDGlqspyQ==\n-----END PRIVATE KEY-----\n",
+  "client_email": "consulta-cnpj-conta-servico@consulta-cnpj-379413.iam.gserviceaccount.com",
+  "client_id": "100345980257748217935",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/consulta-cnpj-conta-servico%40consulta-cnpj-379413.iam.gserviceaccount.com"
+}
