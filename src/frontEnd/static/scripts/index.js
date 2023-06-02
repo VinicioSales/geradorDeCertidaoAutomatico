@@ -12,18 +12,26 @@ fetch('http://localhost:5000/get_nome_clientes')
 
 razaoSocial.addEventListener('input', () => {
     const searchTerm = razaoSocial.value.toLowerCase();
-
-    // Filter the list of client names based on the search term
-    const filteredClientes = nomeClientes.filter(cliente =>
-        cliente.toLowerCase().includes(searchTerm)
-    );
-
     dropdownContent.innerHTML = '';
 
-    for (let i=0; i<filteredClientes.length; i++) {
-        const div = document.createElement('div');
-        div.innerHTML = filteredClientes[i];
-        dropdownContent.appendChild(div);
+    if (searchTerm !== "") {
+        const filteredClientes = nomeClientes.filter(cliente =>
+            cliente.toLowerCase().includes(searchTerm)
+        );
+
+        // Add each filtered client name to the dropdown
+        for (let i = 0; i < filteredClientes.length; i++) {
+            const div = document.createElement('div');
+            div.innerHTML = filteredClientes[i];
+            
+            // Add click event to each dropdown item
+            div.addEventListener('click', function () {
+                razaoSocial.value = this.innerHTML;
+                dropdownContent.innerHTML = '';
+            });
+
+            dropdownContent.appendChild(div);
+        }
     }
 });
 
