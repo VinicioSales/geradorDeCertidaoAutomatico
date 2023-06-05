@@ -5,3 +5,4 @@ Projeto gerador_de_certidao-RANDE_ORIENTE_DO_BRASIL
 ### Modificado
     - formatação do CPF/CNPJ do cliente.
     - Alterado aba planilha google sheets para "gerador_de_certidao_GRANDE_ORIENTE_DO_BRASIL"
+    - Alterado cabeçalho (GOB-BAIANO)
