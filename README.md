@@ -42,18 +42,18 @@ O backend do projeto foi desenvolvido utilizando a linguagem de programação Py
 ## Estrutura de pastas e arquivos principais
 
 A estrutura de pastas e arquivos principais do backend do projeto é a seguinte:
-	src
-└── backEnd
-    ├── server.py
-    ├── funcs
-    │   └── geradores.py
-    └── modules
-        ├── api
-        │   ├── clientes.py
-        │   ├── financas.py
-        │   └── google.py
-        └── funcs
-            └── funcs.py
+-   src
+    -   backEnd
+        -   server.py
+        -   funcs
+            -   geradores.py
+        -   modules
+            -   api
+                -   clientes.py
+                -   financas.py
+                -   google.py
+            -   funcs
+                -   funcs.py
 
 -   **src/backEnd/fonts**: Pasta que armazena arquivos de fontes utilizadas no projeto.
     
@@ -218,15 +218,15 @@ O frontend do projeto é responsável pela interface de usuário e interação c
 A estrutura de pastas e arquivos principais do frontend é a seguinte:
 
 
-src/
-└── frontEnd/
-    ├── static/
-    │   ├── scripts/
-    │   │   └── index.js
-    │   └── styles/
-    │       └── index.css
-    └── templates/
-        └── index.html 
+- src/
+-   frontEnd/
+    -   static/
+        -   scripts/
+            -   index.js
+        -   styles/
+            -   index.css
+    -   templates/
+        -   index.html 
 
 -   `src/frontEnd/static/scripts/index.js`: Arquivo JavaScript responsável pela lógica e interação da página.
 -   `src/frontEnd/static/styles/index.css`: Arquivo CSS que define o estilo da página.
@@ -270,7 +270,7 @@ Esta seção descreve os passos necessários para executar o projeto.
 
 Antes de executar o projeto, verifique se o seguinte software está instalado no seu sistema:
 
--   Python 3.x
+-   Python 3.11.3
 
 ## Passos para instalação
 
