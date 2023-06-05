@@ -133,21 +133,6 @@ def get_contas_receber_clientes():
 
     return dict_contas_receber_atrasadas_clientes
 
-#NOTE - remover_caracteres_especiais
-def remover_caracteres_especiais(cpf_cnpj):
-    """
-    Remove caracteres especiais de um CPF ou CNPJ.
-
-    Args:
-        cpf_cnpj (str): CPF ou CNPJ a ser processado.
-
-    Returns:
-        str: CPF ou CNPJ sem caracteres especiais.
-
-    """
-    cpf_cnpj = re.sub(r'[^0-9]', '', cpf_cnpj)
-    
-    return cpf_cnpj
 
 #SECTION - script
 def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
@@ -194,7 +179,6 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 cidade = dados_cliente['cidade']
                 endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
                 break
-        cnpj_cpf = remover_caracteres_especiais(cnpj_cpf)
 
         print(f'atrasada: {atrasada}')
         print(f'divida_ativa: {divida_ativa}')
