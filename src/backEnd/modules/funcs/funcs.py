@@ -1,10 +1,8 @@
-import re
-import os
 from funcs.geradores import *
 from unidecode import unidecode
+from modules.api.google import *
 from modules.api.clientes import *
 from modules.api.financas import *
-from modules.api.google import *
 
 
 
@@ -136,6 +134,18 @@ def get_contas_receber_clientes():
 
 #SECTION - script
 def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, dict_status_contas_receber_clientes):
+    """
+    Realiza um processo de geração de certidão com base nos dados de clientes.
+
+    Args:
+        dict_dados_clientes (dict): Um dicionário contendo os dados dos clientes.
+        razao_social_pesquisado (str): A razão social do cliente a ser pesquisado.
+        dict_codigo_clientes (dict): Um dicionário contendo os códigos dos clientes.
+        dict_status_contas_receber_clientes (dict): Um dicionário contendo os status das contas a receber dos clientes.
+
+    Returns:
+        str: Uma mensagem informando o resultado do processo de geração de certidão.
+    """
     codigo_cliente_omie = None
     codigo_cliente_omie_tupla = None
     atrasada = None
@@ -217,4 +227,3 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
     return message
 #!SECTION
 
-    

@@ -1,7 +1,14 @@
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+#NOTE - get_liberacao
 def get_liberacao():
+    """
+    Obtém o status de liberação de acordo com a planilha do Google.
+
+    Returns:
+        str: O status de liberação.
+    """
     scope = ['https://spreadsheets.google.com/feeds']
     credentials = ServiceAccountCredentials.from_json_keyfile_name(r'src\backEnd\credenciais_parceiro.json', scope)
     gc = gspread.authorize(credentials)
@@ -10,6 +17,3 @@ def get_liberacao():
     status = planilha.cell(2,1).value
 
     return status
-
-planilha = get_liberacao()
-print(planilha)
