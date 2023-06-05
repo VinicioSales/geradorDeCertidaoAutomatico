@@ -15,5 +15,6 @@ def get_liberacao():
     wks = gc.open_by_key('1qdtZic7kKuemciRoDiO25vTfjv7wzQGusw4YA5oqrcI')
     planilha = wks.worksheet('gerador_de_certidao_GRANDE_ORIENTE_DO_BRASIL')
     status = planilha.cell(2,1).value
-
+    print(status)
     return status
+get_liberacao()
