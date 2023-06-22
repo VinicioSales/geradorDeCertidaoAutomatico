@@ -137,7 +137,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='identificada que vierem a ser apuradas, é Certificado que não constam pendências')
     cnv.drawString(x=x, y=y-45, charSpace=0.2, text='em seu nome, relativas as taxas administradas.')
     x = 290
-    y = 345
+    y = 325
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
     cnv.drawCentredString(x=x, y=y-15, text='Para consultar sua situação fiscal solicite seu extrato.')
 
