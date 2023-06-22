@@ -85,13 +85,14 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 120
     y = 805
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='DELEGACIA REGIONAL DO GOB NA BAHIA')
+    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
@@ -185,13 +186,14 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 120
     y = 805
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='SECRETARIA DE FINANCAS GOB-BAIANO')
+    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
@@ -292,13 +294,14 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     x = 120
     y = 805
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='SECRETARIA DE FINANCAS GOB-BAIANO')
+    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
+    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
