@@ -1,6 +1,13 @@
 Projeto gerador_de_certidao-RANDE_ORIENTE_DO_BRASIL
 ===================================================
 
+
+## [0.2.0] - 22/06/2023
+### Modificado
+    - Alterado Cabeçalho
+    - Alterado CNPJ
+    - Alterado texto da positiva e positiva negativa
+
 ## [0.1.0] - 05/06/2023
 ### Modificado
     - formatação do CPF/CNPJ do cliente.
