@@ -70,10 +70,10 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     #NOTE - logo
     img = Image.open(logo)
     width, height = img.size
-    escala = 0.2
+    escala = 0.05
     width = width * escala
     height = height * escala
-    cnv.drawImage(logo, x=25, y=730, width=width, height=height)
+    cnv.drawImage(logo, x=30, y=735, width=width, height=height)
 
     #NOTE - Borda
     largura, altura = A4
@@ -170,10 +170,10 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     #NOTE - logo
     img = Image.open(logo)
     width, height = img.size
-    escala = 0.2
+    escala = 0.05
     width = width * escala
     height = height * escala
-    cnv.drawImage(logo, x=25, y=730, width=width, height=height)
+    cnv.drawImage(logo, x=30, y=735, width=width, height=height)
 
     #NOTE - Borda
     largura, altura = A4
@@ -231,10 +231,10 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 440
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da DELEGACIA REGIONAL DO GOB NA BAHIA')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima identificada que')
-    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='vierem a ser apuradas, é Certificado que não constam pendências em seu nome, relativas as')
-    cnv.drawString(x=x, y=y-45, charSpace=0.2, text='taxas administradas.')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='identificada que vierem a ser apuradas, é Certificado que não constam pendências')
+    cnv.drawString(x=x, y=y-45, charSpace=0.2, text='em seu nome, relativas as taxas administradas.')
     
     #NOTE - Data
     x = 35
@@ -277,10 +277,10 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     #NOTE - logo
     img = Image.open(logo)
     width, height = img.size
-    escala = 0.2
+    escala = 0.05
     width = width * escala
     height = height * escala
-    cnv.drawImage(logo, x=25, y=730, width=width, height=height)
+    cnv.drawImage(logo, x=30, y=735, width=width, height=height)
 
     #NOTE - Borda
     largura, altura = A4
