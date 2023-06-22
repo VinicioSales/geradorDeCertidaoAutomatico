@@ -120,6 +120,7 @@ def get_contas_receber_clientes():
                     break
                 else:
                     dic_conta_atrasada['divida_ativa'] = False
+            dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
             if status_titulo == "ATRASADO":
                 dic_conta_atrasada['atrasada'] = True
                 dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
@@ -166,10 +167,12 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
     if codigo_cliente_omie_pesquisado != None:
         #NOTE - Get Atrasada
         for cliente in dict_status_contas_receber_clientes.items():
+            print(f"cliente: {cliente}")
             codigo_cliente_omie_conta_receber = cliente[0]
             status = cliente[1]
             divida_ativa = status['divida_ativa']
             atrasada = status['atrasada']
+            data_vencimento = status["data_vencimento"]
             if codigo_cliente_omie_conta_receber == codigo_cliente_omie_pesquisado:
                 break
             else: 
@@ -215,7 +218,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             #FIXME - REMOVER
             print(f'gerar_certidao_positiva_negativa')
 
-            gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
+            gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade, data_vencimento=data_vencimento)
             message = f'{razao_social}:\nGerado certidão positiva com efeito negativo'
 
         else:

@@ -7,6 +7,7 @@ Projeto gerador_de_certidao-RANDE_ORIENTE_DO_BRASIL
     - Alterado Cabeçalho
     - Alterado CNPJ
     - Alterado texto da positiva e positiva negativa
+    - Pegando data vencimento da parcela caso tenha parcela
 
 ## [0.1.0] - 05/06/2023
 ### Modificado

@@ -25,7 +25,8 @@ def listar_contas_receber(pagina: int):
                                         {
                                             "pagina": pagina,
                                             "registros_por_pagina": 500,
-                                            "apenas_importado_api": "N"
+                                            "apenas_importado_api": "N",
+                                            "ordenar_por": "DATA_VENCIMENTO"
                                         }
                                     ]
                         })

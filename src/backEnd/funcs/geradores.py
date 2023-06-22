@@ -20,7 +20,7 @@ data_validade = data_atual_2 + datetime.timedelta(days=30)
 data_validade = data_validade.strftime("%d/%m/%Y")
 
 #NOTE - QRCODE
-def gerar_qr_code(cnpj_cpf, razao_social):
+def gerar_qr_code(cnpj_cpf, razao_social, data_validade: str):
     data_hora_atual = datetime.datetime.now()
     data_hora_formatada = data_hora_atual.strftime('%d/%m/%Y %H:%M:%S')
     dados = f"Leandro dos Santos Araújo \nEmissão: {data_atual} \nValidade: {data_validade}"
@@ -64,7 +64,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - endereco: str - O endereço do solicitante.
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     """
-    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social, data_validade=data_validade)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -164,7 +164,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     - municipio_uf: str - O município e UF (Unidade Federativa) do solicitante.
     - data_emissao: str - A data de emissão da certidão.
     """
-    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social, data_validade=data_validade)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO NEGATIVA - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -260,7 +260,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
 #!SECTION
 
 #SECTION - gerar_certidao_positiva_negativa
-def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str):
+def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco: str, municipio_uf: str, data_vencimento: str):
     """
     Gera uma certidão positiva com efeito negativo de débitos relativos às taxas do DELEGACIA REGIONAL DO GOB NA BAHIA.
 
@@ -271,7 +271,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     - municipio_uf (str): Município e UF do solicitante.
     - data_emissao (str): Data de emissão da certidão.
     """
-    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social)
+    gerar_qr_code(cnpj_cpf=cnpj_cpf, razao_social=razao_social, data_validade=data_vencimento)
     cnv = canvas.Canvas(fr'{diretorio_documentos}\CERTIDAO POSITIVA COM EFEITO NEGATIVO - {razao_social}.pdf', pagesize=A4)
     
     #NOTE - logo
@@ -356,7 +356,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='VÁLIDO ATÉ: ')
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x+100, y=y-15, text=data_validade)
+    cnv.drawString(x=x+100, y=y-15, text=data_vencimento)
     cnv.setFont('font1_bold', 11)
 
     #NOTE - Rodapé
