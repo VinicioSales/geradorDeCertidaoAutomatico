@@ -12,9 +12,8 @@ def get_liberacao():
     scope = ['https://spreadsheets.google.com/feeds']
     credentials = ServiceAccountCredentials.from_json_keyfile_name(r'src\backEnd\credenciais_parceiro.json', scope)
     gc = gspread.authorize(credentials)
-    wks = gc.open_by_key('1qdtZic7kKuemciRoDiO25vTfjv7wzQGusw4YA5oqrcI')
-    planilha = wks.worksheet('gerador_de_certidao_GRANDE_ORIENTE_DO_BRASIL')
-    status = planilha.cell(2,1).value
+    wks = gc.open_by_key('1ZM4SIz5AEnPoyTBjF6mlm5nx6_e3fmjpNEaj9OE57qc')
+    planilha = wks.worksheet('Página1')
+    status = planilha.cell(2,2).value
     print(status)
     return status
-get_liberacao()
