@@ -109,24 +109,35 @@ def get_contas_receber_clientes():
         response = response.json()
         conta_receber_cadastro = response['conta_receber_cadastro']
         for conta_receber in conta_receber_cadastro:
-            dic_conta_atrasada = {}
             codigo_cliente_fornecedor = conta_receber['codigo_cliente_fornecedor']
-            status_titulo = conta_receber['status_titulo']
-            categorias = conta_receber['categorias']
-            for categoria in categorias:
-                codigo_categoria = categoria['codigo_categoria']
-                if codigo_categoria == codigo_categoria_divida_ativa:
-                    dic_conta_atrasada['divida_ativa'] = True
-                    break
+            if codigo_cliente_fornecedor not in dict_contas_receber_atrasadas_clientes:
+                dic_conta_atrasada = {}
+                status_titulo = conta_receber['status_titulo']
+
+                if status_titulo == "ATRASADO":
+                    dic_conta_atrasada['atrasada'] = True
+                    dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+                
+                # elif status_titulo != "ATRASADO":
+                #     dic_conta_atrasada['atrasada'] = False
+                #     dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+                
                 else:
-                    dic_conta_atrasada['divida_ativa'] = False
-            dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
-            if status_titulo == "ATRASADO":
-                dic_conta_atrasada['atrasada'] = True
-                dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
-            elif codigo_cliente_fornecedor not in dict_contas_receber_atrasadas_clientes:
-                dic_conta_atrasada['atrasada'] = False
-                dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+                    categorias = conta_receber['categorias']
+                    for categoria in categorias:
+                        codigo_categoria = categoria['codigo_categoria']
+                        if codigo_categoria == codigo_categoria_divida_ativa:
+                            dic_conta_atrasada['divida_ativa'] = True
+                            dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
+                            dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+                            break
+                    #     else:
+                    #         dic_conta_atrasada['divida_ativa'] = False
+                    # dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
+                    # if status_titulo == "ATRASADO":
+                    #     dic_conta_atrasada['atrasada'] = True
+                    #     dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
+            
         
         pagina = pagina + 1
 
@@ -167,17 +178,18 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
     if codigo_cliente_omie_pesquisado != None:
         #NOTE - Get Atrasada
         for cliente in dict_status_contas_receber_clientes.items():
-            print(f"cliente: {cliente}")
             codigo_cliente_omie_conta_receber = cliente[0]
             status = cliente[1]
-            divida_ativa = status['divida_ativa']
-            atrasada = status['atrasada']
-            data_vencimento = status["data_vencimento"]
+            divida_ativa = status.get('divida_ativa', False)
+            atrasada = status.get('atrasada', None)
+            data_vencimento = status.get("data_vencimento", None)
             if codigo_cliente_omie_conta_receber == codigo_cliente_omie_pesquisado:
+                negativa = False
                 break
-            else: 
-                atrasada = None
-                divida_ativa = None
+            else:
+                negativa = True
+                # atrasada = None
+                # divida_ativa = None
         
 
         for cliente  in dict_dados_clientes.items():
@@ -198,26 +210,17 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
 
         if atrasada == True:
 
-            #FIXME - REMOVER
-            print(f'gerar_certidao_positiva')
-
             gerar_certidao_positiva(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco, municipio_uf=cidade)
             message = f'{razao_social}:\nGerado certidão positiva'
 
             
-        elif atrasada == False and divida_ativa == False:
-
-            #FIXME - REMOVER
-            print(f'gerar_certidao_negativa')
+        elif negativa == True:
 
             gerar_certidao_negativa(cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade)
             message = f'{razao_social}:\nGerado certidão negativa'
 
             
-        elif atrasada == False and divida_ativa == True :
-            #FIXME - REMOVER
-            print(f'gerar_certidao_positiva_negativa')
-
+        elif divida_ativa == True :
             gerar_certidao_positiva_negativa(cnpj_cpf=cnpj_cpf, razao_social=razao_social, endereco=endereco_completo, municipio_uf=cidade, data_vencimento=data_vencimento)
             message = f'{razao_social}:\nGerado certidão positiva com efeito negativo'
 
