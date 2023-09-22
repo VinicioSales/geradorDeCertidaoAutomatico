@@ -132,9 +132,9 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil –')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='Bahia / GOB-BA, sobre a A R L S acima identificada são insuficientes para a')
-    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='emissão de Certidão Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='GOB-BA, sobre a A R L S acima identificada são insuficientes para a emissão de Certidão')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 325
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
@@ -323,8 +323,6 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.drawString(x=x, y=y, text='CNPJ/CPF:')
     cnv.setFont('font1', 10)
     cnv.drawString(x=x+padding, y=y, text=cnpj_cpf)
-    cnv.setFillColor(amarelo)
-    cnv.roundRect(x=x-3, y=y-19, width=155, height=15, radius=3, stroke = 0, fill=1)
     cnv.setFillColor(preto)
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y-15, text='NOME / RAZÃO SOCIAL:')
