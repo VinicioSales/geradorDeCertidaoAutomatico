@@ -133,7 +133,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     y = 410
     cnv.setFont('font1', 11)
     cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil -BAIANO,')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='sobre a A R L S acima identificada são insuficientes para a emissão de Certidão Negativa')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão Negativa')
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 325
