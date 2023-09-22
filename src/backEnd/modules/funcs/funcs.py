@@ -118,26 +118,16 @@ def get_contas_receber_clientes():
                     dic_conta_atrasada['atrasada'] = True
                     dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
                 
-                # elif status_titulo != "ATRASADO":
-                #     dic_conta_atrasada['atrasada'] = False
-                #     dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
-                
-                else:
+                elif status_titulo == "A VENCER":
                     categorias = conta_receber['categorias']
                     for categoria in categorias:
                         codigo_categoria = categoria['codigo_categoria']
                         if codigo_categoria == codigo_categoria_divida_ativa:
                             dic_conta_atrasada['divida_ativa'] = True
                             dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
+                            dic_conta_atrasada["codigo_lancamento_omie"] = conta_receber["codigo_lancamento_omie"]
                             dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
                             break
-                    #     else:
-                    #         dic_conta_atrasada['divida_ativa'] = False
-                    # dic_conta_atrasada["data_vencimento"] = conta_receber["data_vencimento"]
-                    # if status_titulo == "ATRASADO":
-                    #     dic_conta_atrasada['atrasada'] = True
-                    #     dict_contas_receber_atrasadas_clientes[codigo_cliente_fornecedor] = dic_conta_atrasada
-            
         
         pagina = pagina + 1
 
@@ -183,6 +173,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
             divida_ativa = status.get('divida_ativa', False)
             atrasada = status.get('atrasada', None)
             data_vencimento = status.get("data_vencimento", None)
+            codigo_lancamento_omie = status.get("codigo_lancamento_omie", None)
             if codigo_cliente_omie_conta_receber == codigo_cliente_omie_pesquisado:
                 negativa = False
                 break
@@ -204,6 +195,7 @@ def script(dict_dados_clientes, razao_social_pesquisado, dict_codigo_clientes, d
                 cidade = dados_cliente['cidade']
                 endereco_completo = f'{endereco}, Nº {endereco_numero} - {bairro}'
                 break
+
 
         print(f'atrasada: {atrasada}')
         print(f'divida_ativa: {divida_ativa}')

@@ -1,0 +1,4 @@
+- Guardar a data do vencimento antigo
+- Verificar se tem data de vencimento antigo
+- Buscar o proximo conta receber
+- Colocar a data do proximo conta receber no json do cliente
