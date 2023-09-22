@@ -132,9 +132,9 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil – Bahia /')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='GOB-BA, sobre a A R L S acima identificada são insuficientes para a emissão de Certidão')
-    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='Negativa ou Positiva Com Efeito Negativo de Débitos.')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil -BAIANO,')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='sobre a A R L S acima identificada são insuficientes para a emissão de Certidão Negativa')
+    cnv.drawString(x=x, y=y-30, charSpace=0.2, text='ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 325
     cnv.drawCentredString(x=x, y=y, text='Existem débitos!')
@@ -341,7 +341,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da Grande Oriente do Brasil - Baiano')
     cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima')
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='identificada que vierem a ser apuradas, é Certificado que não constam pendências')
     cnv.drawString(x=x, y=y-45, charSpace=0.2, text='em seu nome, relativas as taxas administradas.')
