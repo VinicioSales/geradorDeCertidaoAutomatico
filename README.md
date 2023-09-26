@@ -1,3 +1,5 @@
+-----Foram removidos dados e codigos sensíveis do cliente------
+
 # Documentação do Projeto gerador_de_certidao_GRANDE_ORIENTE_DO_BRASIL
 
 ## Introdução
