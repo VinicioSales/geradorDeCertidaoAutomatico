@@ -87,12 +87,12 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y-15, text='NOME DA EMPRESA')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
+    cnv.drawString(x=x, y=y-30, text='SUBTITULO DA EMPRESA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='ENDEREÇO')
+    cnv.drawString(x=x, y=y-60, text='CNPJ DA EMPRESA')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
@@ -105,7 +105,7 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA DE DÉBITOS')
-    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO NOME DA EMPRESA')
 
     #NOTE - Dados
     x = 35
@@ -132,8 +132,8 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na Secretaria de Finanças do Grande Oriente do Brasil -BAIANO,')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='sobre a A∴R∴L∴S∴ acima identificada são insuficientes para a emissão de Certidão Negativa')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='As informações disponíveis na nome da empresa,')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='sobre a nome do orgão acima identificada são insuficientes para a emissão de Certidão Negativa')
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='ou Positiva Com Efeito Negativo de Débitos.')
     x = 290
     y = 325
@@ -144,8 +144,8 @@ def gerar_certidao_positiva(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
-    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
+    cnv.drawCentredString(x=x, y=y, text='E-mail')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone')
 
     cnv.save()
 #!SECTION
@@ -187,12 +187,12 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y-15, text='NOME DA EMPRESA')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
+    cnv.drawString(x=x, y=y-30, text='SUBTITULO DA EMPRESA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='ENDEREÇO')
+    cnv.drawString(x=x, y=y-60, text='CNPJ DA EMPRESA')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
@@ -205,7 +205,7 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO NEGATIVA DE DÉBITOS')
-    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO NOME DA EMPRESA')
 
     #NOTE - Dados
     x = 35
@@ -232,8 +232,8 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da GRANDE ORIENTE DO BRASIL - BAIANO')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da nome da empresa')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da nome do orgão acima')
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='identificada que vierem a ser apuradas, é Certificado que não constam pendências')
     cnv.drawString(x=x, y=y-45, charSpace=0.2, text='em seu nome, relativas as taxas administradas.')
     
@@ -254,8 +254,8 @@ def gerar_certidao_negativa(cnpj_cpf: str, razao_social: str, endereco: str, mun
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
-    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
+    cnv.drawCentredString(x=x, y=y, text='E-mail')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone')
 
     cnv.save()
 #!SECTION
@@ -295,12 +295,12 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     cnv.setFont('font1_bold', 11)
     cnv.drawString(x=x, y=y, text='ESTADO  BAHIA')
     cnv.setFont('font1_bold', 12)
-    cnv.drawString(x=x, y=y-15, text='GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawString(x=x, y=y-15, text='NOME DA EMPRESA')
     cnv.setFont('font1_bold', 11)
-    cnv.drawString(x=x, y=y-30, text='SECRETARIA DE FINANCAS GOB-BAIANO')
+    cnv.drawString(x=x, y=y-30, text='SUBTITULO DA EMPRESA')
     cnv.setFont('font1_bold', 10)
-    cnv.drawString(x=x, y=y-45, text='Rua da Portas do carmo, 37 - Pelourinho - 40.026-290')
-    cnv.drawString(x=x, y=y-60, text='CNPJ: 51.130.499/0001-92')
+    cnv.drawString(x=x, y=y-45, text='ENDEREÇO')
+    cnv.drawString(x=x, y=y-60, text='CNPJ DA EMPRESA')
     img = Image.open(qr_code)
     width, height = img.size
     escala = 0.2
@@ -313,7 +313,7 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     y = 650
     cnv.setFont('font1_bold', 12)
     cnv.drawCentredString(x=x, y=y, text='CERTIDÃO POSITIVA COM EFEITO NEGATIVO DE DÉBITOS')
-    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO GRANDE ORIENTE DO BRASIL - BAIANO')
+    cnv.drawCentredString(x=x, y=y-14, text='RELATIVOS ÀS TAXAS DO NOME DA EMPRESA')
 
     #NOTE - Dados
     x = 35
@@ -341,8 +341,8 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     x = 35
     y = 410
     cnv.setFont('font1', 11)
-    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da Secretaria de Finanças da Grande Oriente do Brasil - Baiano')
-    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da A∴R∴L∴S∴ acima')
+    cnv.drawString(x=x, y=y, charSpace=0.2, text='Ressalvado o direito da nome da empresa')
+    cnv.drawString(x=x, y=y-15, charSpace=0.2, text='cobrar e inscrever quaisquer dívidas de responsabilidade da nome do orgão acima')
     cnv.drawString(x=x, y=y-30, charSpace=0.2, text='identificada que vierem a ser apuradas, é Certificado que não constam pendências')
     cnv.drawString(x=x, y=y-45, charSpace=0.2, text='em seu nome, relativas as taxas administradas.')
     
@@ -363,8 +363,8 @@ def gerar_certidao_positiva_negativa(cnpj_cpf: str, razao_social: str, endereco:
     x = 300
     y = 70
     cnv.setFont('font1_bold', 8)
-    cnv.drawCentredString(x=x, y=y, text='E-mail: financeiro.delegacia@gmail.com')
-    cnv.drawCentredString(x=x, y=y-15, text='Telefone: (71) 9 9920-5873')
+    cnv.drawCentredString(x=x, y=y, text='E-mail')
+    cnv.drawCentredString(x=x, y=y-15, text='Telefone')
 
     cnv.save()
 #!SECTION
